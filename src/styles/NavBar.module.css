@@ -1,0 +1,28 @@
+.navbar {
+    border: 1px solid #000 
+}
+
+.brand {
+    margin-right: 5px;
+}
+
+.maintitle {
+    font-family: 'Special Elite', sans-serif;
+    font-size: 1.7rem;
+    justify-content: center;
+    margin-bottom: 0px;
+    margin-top: 7px;
+}
+
+.upload {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    size: 300%;
+}
+
+nav {
+    font-family:"Libre Caslon Text", sans-serif;
+    font-size: 1rem;
+}
