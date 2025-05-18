@@ -18,10 +18,10 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-right">
-            <Nav.Link>
+            <Nav.Link to="/login">
               Login
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link to="/signup">
               Sign up
             </Nav.Link>
           </Nav>
