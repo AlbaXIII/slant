@@ -2,6 +2,8 @@ import styles from "./App.module.css";
 import NavBar from "./components/NavBar";
 import Container from "react-bootstrap/Container";
 import { Route, Switch } from "react-router-dom";
+import LoginForm from "./pages/account/LoginForm";
+import LogoutForm from "./pages/account/LogoutForm";
 import SignUpForm from "./pages/account/SignUpForm";
 import "./api/axiosDefaults";
 
@@ -12,8 +14,9 @@ function App() {
        <Container className={styles.Main}>
         <Switch>
           <Route exact path="/" render={() => <h1>HOME</h1>} />
-          <Route exact path="/login" render={() => <h1>Login</h1>} />
+          <Route exact path="/login" render={() => <LoginForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
+          <Route exact path="/logout" render={() => <LogoutForm />} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>

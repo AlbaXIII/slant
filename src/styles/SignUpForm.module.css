@@ -43,6 +43,8 @@ nav {
     margin-bottom: 20px;
 }
 
-.hidden {
-    display: none;
+.link {
+    color: inherit;
+    text-decoration: inherit;
+    font-weight: bold;
 }
