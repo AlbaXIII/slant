@@ -1,7 +1,3 @@
-.navbar {
-    border: 1px solid #000 
-}
-
 .brand {
     margin-right: 5px;
 }
@@ -12,6 +8,11 @@
     justify-content: center;
     margin-bottom: 0px;
     margin-top: 7px;
+    color: black;
+}
+
+.maintitle:hover{
+    font-weight: bold;
 }
 
 .upload {
@@ -20,9 +21,21 @@
     left: 50%;
     transform: translate(-50%, -50%);
     size: 300%;
+    margin-top: 10px;
+    color: black;
 }
 
-nav {
-    font-family:"Libre Caslon Text", sans-serif;
-    font-size: 1rem;
+.upload:hover{
+    font-weight: bold;
+}
+
+p {
+    font-size: 1.4rem;
+    margin-top: 5px;
+}
+
+a {
+    font-size: 1.4rem;
+    margin-left: 20px;
+    color: inherit;
 }

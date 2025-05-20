@@ -2,28 +2,56 @@ import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../assets/slant-default-image_thumbnail.png";
 import styles from "../styles/NavBar.module.css";
+import { NavLink } from "react-router-dom";
+import { useCurrentAuthUser } from "../contexts/AuthUserContext";
+
 
 const NavBar = () => {
+  
+  const currentUser = useCurrentAuthUser();
+
+  const authLinks = (
+    <>
+      <NavLink to="/">
+        {currentUser?.username}
+      </NavLink>
+      <NavLink to="/logout" style={{ textDecoration: 'none' }}>
+          Logout
+      </NavLink>
+    </>
+  )
+
+  const nonAuthLinks = (
+    <>
+      <NavLink to="/login" style={{ textDecoration: 'none' }}>
+        Login
+      </NavLink>
+      <NavLink to="/signup" style={{ textDecoration: 'none' }}>
+        Sign up
+      </NavLink>
+    </>
+  )
+
   return (
     <Navbar expand="md" fixed="top" className={styles.navbar}>
       <Container>
         <Navbar.Brand>
-          <img src={logo} alt="logo" height="35" className={styles.brand} />
-          <h2 className={styles.maintitle}>slant.</h2>
+          <NavLink to="/" style={{ textDecoration: 'none' }}>
+            <img src={logo} alt="logo" height="35" className={styles.brand} />
+            <h2 className={styles.maintitle}>slant.</h2>
+          </NavLink>
         </Navbar.Brand>
-        <div className={styles.upload}>
-          <i href="#" height="35" class="fa-solid fa-2xl fa-arrow-up-from-bracket"></i>
-          <p>Upload</p>
-        </div>
+        <p>News, untilted.</p>
+        <NavLink to="/">
+          <div className={styles.upload}>
+            <i height="35" class="fa-solid fa-2xl fa-arrow-up-from-bracket"></i>
+            <p className={styles.uploadtext}>Upload</p>
+          </div>
+        </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-right">
-            <Nav.Link to="/login">
-              Login
-            </Nav.Link>
-            <Nav.Link to="/signup">
-              Sign up
-            </Nav.Link>
+            {currentUser ? authLinks : nonAuthLinks}
           </Nav>
         </Navbar.Collapse>
       </Container>

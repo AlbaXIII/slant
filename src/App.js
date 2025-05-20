@@ -11,7 +11,7 @@ function App() {
   return (
     <div className={styles.App}>
       <NavBar />
-       <Container className={styles.Main}>
+      <Container className={styles.Main}>
         <Switch>
           <Route exact path="/" render={() => <h1>HOME</h1>} />
           <Route exact path="/login" render={() => <LoginForm />} />

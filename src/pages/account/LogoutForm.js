@@ -5,16 +5,21 @@ import { Link, useHistory } from "react-router-dom";
 
 import styles from "../../styles/LogoutForm.module.css"
 
+import { useSetCurrentAuthUser } from "../../contexts/AuthUserContext";
+
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
 function LogoutForm(){
     
+    const setCurrentAuthUser = useSetCurrentAuthUser();
+
     const history = useHistory();
     
     const handleSignout = async () => {
         try {
             await axios.post("dj-rest-auth/logout/");
+            setCurrentAuthUser(null);
             history.push("/");
             } catch (err) {
             console.log(err);
