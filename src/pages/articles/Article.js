@@ -3,6 +3,7 @@ import styles from "../../styles/Article.module.css";
 import { useCurrentAuthUser } from "../../contexts/AuthUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { axiosRes } from "../../api/axiosDefaults";
 
 const Article = (props) => {
     const {
@@ -22,10 +23,44 @@ const Article = (props) => {
         created_on,
         updated_on,
         articlePage,
+        setArticles,
     } = props;
 
     const currentUser = useCurrentAuthUser();
     const is_owner = currentUser?.username === owner;
+
+    const handleFavourite = async () => {
+        try {
+            const { data } = await axiosRes.post("/favourites/", { article: id });
+            setArticles((prevArticles) => ({
+                ...prevArticles,
+                results: prevArticles.results.map((article) => {
+                    return article.id === id
+                        ? { ...article, favourites_count: article.favourites_count + 1, favourite_id: data.id }
+                        : article;
+                }),
+            }));
+        } catch (err) {
+        console.log(err);
+        }
+    };
+
+    const handleUnfavourite = async () => {
+        try {
+            await axiosRes.delete(`/favourites/${favourite_id}/`);
+            setArticles((prevArticles) => ({
+                ...prevArticles,
+                results: prevArticles.results.map((article) => {
+                    return article.id === id
+                        ? { ...article, likes_count: article.likes_count - 1, favourite_id: null }
+                        : article;
+                }),
+            }));
+        } catch (err) {
+        console.log(err);
+        }
+    };
+
 
     return (
         <Card>
@@ -52,22 +87,22 @@ const Article = (props) => {
                             placement="top"
                             overlay={<Tooltip>You cannot favourite your own submissions.</Tooltip>}
                         >
-                            <i className="fa-regular fa-star"></i>
+                            <i className="fa-regular fa-xl fa-star"></i>
                         </OverlayTrigger>
                     ) : favourite_id ? (
-                        <span onClick={() => {}}>
-                            <i className="fa-solid fa-star"></i>
+                        <span onClick={handleUnfavourite}>
+                            <i className="fa-solid fa-xl fa-star"></i>
                         </span>
                     ) : currentUser ? (
-                        <span onClick={() => {}}>
-                            <i className="fa-regular fa-star"></i>
+                        <span onClick={handleFavourite}>
+                            <i className="fa-regular fa-xl fa-star"></i>
                         </span>
                     ) : (
                         <OverlayTrigger
                             placement="top"
                             overlay={<Tooltip>Log in to favourite posts!</Tooltip>}
                         >
-                            <i className="fa-regular fa-star"></i>
+                            <i className="fa-regular fa-xl fa-star"></i>
                         </OverlayTrigger>
                     )}
                     {favourites_count}
