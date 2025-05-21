@@ -42,7 +42,7 @@ const NavBar = () => {
           </NavLink>
         </Navbar.Brand>
         <p>News, untilted.</p>
-        <NavLink to="/">
+        <NavLink to="/articles/create">
           <div className={styles.upload}>
             <i height="35" class="fa-solid fa-2xl fa-arrow-up-from-bracket"></i>
             <p className={styles.uploadtext}>Upload</p>
