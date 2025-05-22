@@ -48,7 +48,7 @@ function ArticlesPage({ message, filter = "" }) {
             <Col>
 
                 <div>
-                    <p>News, <em>Untilted</em></p>
+                    <h2>News, <em>Untilted</em></h2>
                 </div>
 
                 <Form 
