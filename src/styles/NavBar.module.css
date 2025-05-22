@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
     background-color: #f3efe8;
     border-bottom: 1px solid black;
 }
@@ -14,6 +14,12 @@
     margin-bottom: 0px;
     margin-top: 7px;
     color: black;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    width: 75%;
 }
 
 .maintitle:hover{

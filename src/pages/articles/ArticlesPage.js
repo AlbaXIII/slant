@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 
 import Article from "./Article";
 
@@ -17,10 +18,12 @@ function ArticlesPage({ message, filter = "" }) {
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
 
+    const [query, setQuery] = useState("");
+
     useEffect(() => {
         const fetchArticles = async () => {
             try {
-                const { data } = await axiosReq.get(`/articles/?${filter}`);
+                const { data } = await axiosReq.get(`/articles/?${filter}search=${query}`);
                 setArticles(data);
                 setHasLoaded(true);
             } catch (err) {
@@ -29,12 +32,39 @@ function ArticlesPage({ message, filter = "" }) {
         };
 
         setHasLoaded(false);
-        fetchArticles();
-    }, [filter, pathname] )
+
+        const timer = setTimeout(() => {
+            fetchArticles();
+        }, 1000);
+
+        return () => {
+            clearTimeout(timer);
+        };
+
+    }, [filter, query, pathname] )
 
     return (
         <Row>
             <Col>
+
+                <div>
+                    <p>News, <em>Untilted</em></p>
+                </div>
+
+                <Form 
+                className={styles.SearchBar}
+                onSubmit={(event) => event.preventDefault()}
+                >
+                    <Form.Control
+                        value={query}
+                        onChange={(event) => setQuery(event.target.value)}
+                        type="text"
+                        className="mr-sm-2"
+                        placeholder="Search posts"
+                    />
+                </Form>
+                
+                
                 {hasLoaded ? (
                 <>
                     {articles.results.length ? (

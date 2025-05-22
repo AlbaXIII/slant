@@ -1,5 +1,5 @@
-import React from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Navbar, Container, Nav, Form, Row, Col, Button } from "react-bootstrap";
 import logo from "../assets/slant-default-image_thumbnail.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
@@ -41,10 +41,6 @@ const NavBar = () => {
             <h2 className={styles.maintitle}>slant.</h2>
           </NavLink>
         </Navbar.Brand>
-        <p className={styles.tagline}>News, <em>untilted.</em></p>
-        <NavLink to="/articles/create">
-            <i height="35" class="fa-solid fa-xl fa-arrow-up-from-bracket"></i>Upload
-        </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-right">
