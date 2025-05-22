@@ -1,3 +1,8 @@
+.navbar{
+    background-color: #f3efe8;
+    border-bottom: 1px solid black;
+}
+
 .brand {
     margin-right: 5px;
 }
@@ -29,9 +34,9 @@
     font-weight: bold;
 }
 
-p {
-    font-size: 1.4rem;
-    margin-top: 5px;
+.tagline {
+    margin-left: 10px;
+
 }
 
 a {

@@ -5,3 +5,24 @@
   text-decoration: none;
 }
 
+.Main {
+  padding-top: 105px;
+}
+
+.Image {
+  max-height: 20vh;
+  max-width: 20vh;
+  max-width: 50%;
+  object-fit: contain;
+  display: flex;
+  float: right;
+}
+
+.Card {
+  background-color:#bba591;
+}
+
+a:hover {
+  text-decoration: none;
+  border: 1px #fff;
+}

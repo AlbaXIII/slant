@@ -7,8 +7,8 @@ import Alert from "react-bootstrap/Alert";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-
 import { Image } from "react-bootstrap"
+import subjectChoices from "../../contexts/SubjectContext";
 
 import styles from "../../styles/ArticleCreateEditForm.module.css";
 // import appStyles from "../../App.module.css";
@@ -74,61 +74,68 @@ function ArticleCreateForm() {
   }
 
   const textFields = (
-    <div>
-      <Form.Group>
-        <Form.Label>Publisher</Form.Label>
-        <Form.Control
-          type="text"
-          name="publisher"
-          value={publisher}
-          onChange={handleChange}
-        />
-      </Form.Group> 
-      <Form.Group>
-        <Form.Label>Subject</Form.Label>
-        <Form.Control
-          type="text"
-          name="subject"
-          value={subject}
-          onChange={handleChange}
-        />
-      </Form.Group>  
-      <Form.Group>
-        <Form.Label>Title</Form.Label>
-        <Form.Control
-          type="text"
-          name="title"
-          value={title}
-          onChange={handleChange}
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Body</Form.Label>
-        <Form.Control
-          as="textarea"
-          rows={10}
-          name="body"
-          value={body}
-          onChange={handleChange}
-        />
-      </Form.Group>
-
-      <Button className={styles.Button} variant="dark" onClick={() => history.goBack()}>
-        cancel
-      </Button>
-      <Button className={styles.Button} variant="dark" type="submit">
-        create
-      </Button>
-    </div>
+      <Container>
+        <Form.Group>
+          <Form.Label className="d-none">Publisher</Form.Label>
+          <Form.Control
+            type="text"
+            name="publisher"
+            value={publisher}
+            onChange={handleChange}
+            placeholder="Publisher*"
+            required
+          />
+        </Form.Group> 
+        <Form.Group>
+          <Form.Label className="d-none">Subject</Form.Label>
+          <Form.Control
+            type="text"
+            name="subject"
+            value={subject}
+            onChange={handleChange}
+            placeholder="Subject*"
+            required
+          />
+        </Form.Group>  
+        <Form.Group>
+          <Form.Label className="d-none">Title</Form.Label>
+          <Form.Control
+            type="text"
+            name="title"
+            value={title}
+            placeholder="Title*"
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label className="d-none">Body</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={10}
+            name="body"
+            value={body}
+            placeholder="Body text (optional)"
+            onChange={handleChange}
+          />
+        </Form.Group>
+      
+        <Button className={styles.Button} variant="dark" onClick={() => history.goBack()}>
+          Cancel
+        </Button>
+        <Button className={styles.Button} variant="dark" type="submit">
+          Create
+        </Button>
+      </Container>
   );
 
   return (
-    <Form onSubmit={handleSubmit} className={styles.Form}>
+    <Form onSubmit={handleSubmit} className={styles.container}>
         <Row>
             <Col>
                 <Container>
-                    <h2>
-                        Add to the conversation.
+                    <h2 className={styles.heading}>
+                        Add to the <em>conversation.</em>
                     </h2>
                     <Form.Group>
                         {image ? (
@@ -138,13 +145,13 @@ function ArticleCreateForm() {
                                 </figure>
                                 <div>
                                     <Form.Label htmlFor="image-upload">
-                                        Change the image
+                                        <i height="35" class="fa-solid fa-2xl fa-arrow-up-from-bracket"></i>
                                     </Form.Label>
                                 </div>
                             </>
                         ) : (
                             <Form.Label htmlFor="image-upload">
-                                Change the image
+                                <i height="35" class="fa-solid fa-2xl fa-arrow-up-from-bracket"></i>
                             </Form.Label>
                         )}
 
@@ -160,9 +167,11 @@ function ArticleCreateForm() {
                             {message}
                         </Alert>
                     ))}
-                    <Container>
-                        {textFields}
-                    </Container>
+                    <div className={styles.formfields}>
+                      <Container>
+                          {textFields}
+                      </Container>
+                    </div>
                 </Container>
             </Col>
         </Row>

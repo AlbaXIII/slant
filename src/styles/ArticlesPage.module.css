@@ -1,0 +1,9 @@
+.loading {
+    font-size: 2rem;
+}
+
+.cards {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}

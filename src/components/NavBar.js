@@ -41,12 +41,9 @@ const NavBar = () => {
             <h2 className={styles.maintitle}>slant.</h2>
           </NavLink>
         </Navbar.Brand>
-        <p>News, untilted.</p>
+        <p className={styles.tagline}>News, <em>untilted.</em></p>
         <NavLink to="/articles/create">
-          <div className={styles.upload}>
-            <i height="35" class="fa-solid fa-2xl fa-arrow-up-from-bracket"></i>
-            <p className={styles.uploadtext}>Upload</p>
-          </div>
+            <i height="35" class="fa-solid fa-xl fa-arrow-up-from-bracket"></i>Upload
         </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

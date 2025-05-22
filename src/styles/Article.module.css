@@ -1,0 +1,36 @@
+.loading {
+    font-size: 2rem;
+}
+
+.cards {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.title {
+    font-weight: bolder;
+    text-decoration: underline;
+    font-size: 1.4rem;
+}
+
+.profileinfo {
+    display: flex;
+    float: left;
+    flex-direction: row;
+}
+
+.maininfo {
+    display: flex;
+    float: left;
+    flex-direction: row;
+}
+
+.imagecontainer {
+    text-align: right;
+}
+
+.body {
+    font-size: 1.2rem;
+}

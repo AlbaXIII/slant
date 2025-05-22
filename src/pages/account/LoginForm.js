@@ -46,51 +46,51 @@ function LoginForm(){
     };
 
     return (
-        <div className={styles.container}>
-            <h2 className={styles.heading}>Log In.</h2>
-            <Form onSubmit={handleLogin}>
-                <Form.Group controlId="username">
-                    <Form.Label className="d-none">Username</Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder="Username"
-                        name="username"
-                        value={username}
-                        onChange={handleChange}
-                        required
-                    />
-                </Form.Group>
-                {errors.username?.map((message, idx) =>
-                    <Alert variant="warning" key={idx}>{message}</Alert>
-                )}
+            <div className={styles.container}>
+                <h2 className={styles.heading}>Log <em>In.</em></h2>
+                <Form onSubmit={handleLogin}>
+                    <Form.Group controlId="username">
+                        <Form.Label className="d-none">Username</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Username"
+                            name="username"
+                            value={username}
+                            onChange={handleChange}
+                            required
+                        />
+                    </Form.Group>
+                    {errors.username?.map((message, idx) =>
+                        <Alert variant="warning" key={idx}>{message}</Alert>
+                    )}
 
-                <Form.Group controlId="password">
-                    <Form.Label className="d-none">Password</Form.Label>
-                    <Form.Control
-                        type="password"
-                        placeholder="Password"
-                        name="password"
-                        value={password}
-                        onChange={handleChange}
-                        required
-                    />
-                </Form.Group>
-                {errors.password?.map((message, idx) =>
-                    <Alert variant="warning" key={idx}>{message}</Alert>
-                )}
+                    <Form.Group controlId="password">
+                        <Form.Label className="d-none">Password</Form.Label>
+                        <Form.Control
+                            type="password"
+                            placeholder="Password"
+                            name="password"
+                            value={password}
+                            onChange={handleChange}
+                            required
+                        />
+                    </Form.Group>
+                    {errors.password?.map((message, idx) =>
+                        <Alert variant="warning" key={idx}>{message}</Alert>
+                    )}
 
-                <Button variant="dark" type="submit">
-                    Log In
-                </Button>
-                {errors.non_field_errors?.map((message, idx) => (
-                    <Alert key={idx} variant="warning" className="mt-3">
-                        {message}
-                    </Alert>
-                ))}
-            </Form>
-            <Container>
-                Need an account? <Link className={styles.link} to="/signup">Sign up here.</Link>
-            </Container>
+                    <Button variant="dark" type="submit">
+                        Log In
+                    </Button>
+                    {errors.non_field_errors?.map((message, idx) => (
+                        <Alert key={idx} variant="warning" className="mt-3">
+                            {message}
+                        </Alert>
+                    ))}
+                </Form>
+        <Container>
+            Need an account? <Link className={styles.link} to="/signup">Sign up here.</Link>
+        </Container>
         </div>
     )
 }

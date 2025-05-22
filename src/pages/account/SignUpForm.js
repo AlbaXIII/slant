@@ -44,7 +44,7 @@ const SignUpForm = () => {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.heading}>Join the conversation.</h2>
+            <h2 className={styles.heading}>Join the <em>conversation.</em></h2>
             <Form onSubmit={handleSignUp} className={styles.form}>
                 <Form.Group controlId="username">
                     <Form.Label className="d-none">Username</Form.Label>
