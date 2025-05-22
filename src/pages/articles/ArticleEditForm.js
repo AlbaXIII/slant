@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -10,13 +10,11 @@ import Col from "react-bootstrap/Col";
 import { Image } from "react-bootstrap"
 
 import styles from "../../styles/ArticleCreateEditForm.module.css";
-// import appStyles from "../../App.module.css";
-// import { useCurrentAuthUser } from "../../contexts/AuthUserContext";
 
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
-function ArticleCreateForm() {
+function ArticleEditForm() {
 
   const [errors, setErrors] = useState({});
   // const currentUser = useCurrentAuthUser;
@@ -33,6 +31,22 @@ function ArticleCreateForm() {
 
   const imageInput = useRef(null);
   const history = useHistory();
+  const { id } = useParams();
+
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(`/articles/${id}/`);
+        const { publisher, subject, title, body, image, is_owner } = data;
+
+        is_owner ? setArticleData({ publisher, subject, title, body, image }) : history.push("/");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    
+    handleMount();
+  }, [history, id]);
 
   const handleChange = (event) => {
     setArticleData({
@@ -61,16 +75,20 @@ function ArticleCreateForm() {
     formData.append("body", body)
     formData.append("image", imageInput.current.files[0]);
 
-    try {
-        const { data } = await axiosReq.post("/articles/", formData);
-        history.push(`/posts/${data.id}`);
-    } catch (err) {
-        console.log(err);
-        if (err.response?.status !== 401) {
-            setErrors(err.response?.data);
-        }
+    if (imageInput?.current?.files[0]) {
+      formData.append("image", imageInput.current.files[0]);
     }
-  }
+
+    try {
+      await axiosReq.put(`/articles/${id}/`, formData);
+      history.push(`/articles/${id}`);
+    } catch (err) {
+      console.log(err);
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
+    }
+  };
 
   const textFields = (
       <Container>
@@ -123,7 +141,7 @@ function ArticleCreateForm() {
           Cancel
         </Button>
         <Button className={styles.Button} variant="dark" type="submit">
-          Create
+          Edit
         </Button>
       </Container>
   );
@@ -178,4 +196,4 @@ function ArticleCreateForm() {
   );
 }
 
-export default ArticleCreateForm;
+export default ArticleEditForm;

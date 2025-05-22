@@ -2,9 +2,10 @@ import React from "react";
 import styles from "../../styles/Article.module.css";
 import appStyles from "../../App.module.css";
 import { useCurrentAuthUser } from "../../contexts/AuthUserContext";
-import { Card, Media, OverlayTrigger, Tooltip, Col, Row } from "react-bootstrap";
+import { Card, Media, OverlayTrigger, Tooltip, Col, Row, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Article = (props) => {
     const {
@@ -29,6 +30,20 @@ const Article = (props) => {
 
     const currentUser = useCurrentAuthUser();
     const is_owner = currentUser?.username === owner;
+    const history = useHistory();
+
+    const handleEdit = () => {
+        history.push(`/articles/${id}/edit`);
+    }
+
+    const handleDelete = async () => {
+        try {
+        await axiosRes.delete(`/articles/${id}/`);
+        history.goBack();
+        } catch (err) {
+        console.log(err);
+        }
+    };
 
     const handleFavourite = async () => {
         try {
@@ -120,6 +135,19 @@ const Article = (props) => {
                     </Link>
                     {ratings_count}
                 </div>
+            </Card.Body>
+            <Card.Body>
+                <Row>
+                    {is_owner ? (
+                        <Col>
+                            <Button variant="dark" onClick={handleEdit}>Edit</Button>
+                            <Button variant="dark" onClick={handleDelete}>Delete</Button>
+                        </Col>
+                    ) : <Col>
+                            <Button className="d-none" variant="dark" onClick={handleEdit}>Edit</Button>
+                            <Button className="d-none" variant="dark" onClick={handleDelete}>Delete</Button>
+                        </Col>}
+                </Row>
             </Card.Body>
         </Card>
     );

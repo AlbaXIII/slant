@@ -16,12 +16,6 @@
     color: black;
 }
 
-.search {
-    display: flex;
-    justify-content: center;
-    width: 75%;
-}
-
 .maintitle:hover{
     font-weight: bold;
 }
