@@ -13,6 +13,9 @@ import appStyles from "../../App.module.css";
 import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
+
 function ArticlesPage({ message, filter = "" }) {
     const [articles, setArticles] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
@@ -68,9 +71,15 @@ function ArticlesPage({ message, filter = "" }) {
                 {hasLoaded ? (
                 <>
                     {articles.results.length ? (
-                    articles.results.map((article) => (
+                    <InfiniteScroll
+                        children={articles.results.map((article) => (
                         <Article key={article.id} {...article} setPosts={setArticles} />
-                    ))
+                        ))}
+                        dataLength={articles.results.length}
+                        loader="Loading..."
+                        hasMore={!!articles.next}
+                        next={() => fetchMoreData(articles, setArticles)}
+                    />
                     ) : (
                     <Container>
                         No results.

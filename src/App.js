@@ -30,7 +30,7 @@ function App() {
           <Route exact path="/logout" render={() => <LogoutForm />} />
           <Route exact path="/create" render={() => <ArticleCreateForm />} />
           <Route exact path="/articles/:id/edit" render={() => <ArticleEditForm />} />
-          <Route exact path="/profiles/:id" render={() => <h1>Profile Space!</h1>} />
+          <Route exact path="/profiles/:id" render={() => <h1>UNDER CONSTRUCTION</h1>} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>
