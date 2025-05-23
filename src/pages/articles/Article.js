@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../../styles/Article.module.css";
 import appStyles from "../../App.module.css";
 import { useCurrentAuthUser } from "../../contexts/AuthUserContext";
-import { Card, Media, OverlayTrigger, Tooltip, Col, Row, Button } from "react-bootstrap";
+import { Card, OverlayTrigger, Tooltip, Col, Row, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";

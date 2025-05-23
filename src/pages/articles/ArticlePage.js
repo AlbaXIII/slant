@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-import CommentCreateForm from "../comments/commentCreateForm";
+import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentAuthUser } from "../../contexts/AuthUserContext";
 
 import { useParams } from "react-router";
@@ -54,7 +54,12 @@ function ArticlePage() {
           ) : null}
           {comments.results.length ? (
             comments.results.map((comment) => (
-              <Comment key={comment.id} {...comment} />
+              <Comment 
+                key={comment.id} 
+                {...comment} 
+                setArticle={setArticle} 
+                setComments={setComments} 
+              />
             ))
           ) : currentUser ? (
             <span>Be the first to comment!</span>
