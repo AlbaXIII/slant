@@ -26,3 +26,10 @@ a:hover {
   text-decoration: none;
   border: 1px #fff;
 }
+
+.Content {
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 2px;
+  border: 1px solid #dadadf;
+}

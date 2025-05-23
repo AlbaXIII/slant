@@ -19,6 +19,7 @@ const Article = (props) => {
         ratings_count,
         publisher,
         subject,
+        link,
         title,
         body,
         image,
@@ -90,6 +91,7 @@ const Article = (props) => {
                 <span className={styles.maininfo}>
                     {subject && <Card.Title>{subject}</Card.Title>}
                     {title && <Card.Title className={styles.title}>{title}</Card.Title>}
+                    <span>{link}</span>
                     <span>{created_on}</span>
                     {is_owner && articlePage && "..."}
                 </span>

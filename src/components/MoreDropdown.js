@@ -1,8 +1,6 @@
 import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 
-// The forwardRef is important!!
-// Dropdown needs access to the DOM node in order to position the Menu
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   <i
     className="fas fa-ellipsis-v"
