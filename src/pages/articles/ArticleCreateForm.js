@@ -29,7 +29,7 @@ function ArticleCreateForm() {
     image: "",
   });
 
-  const { publisher, subject, title, body, image } = articleData;
+  const { publisher, subject, title, body, image, } = articleData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -77,25 +77,48 @@ function ArticleCreateForm() {
         <Form.Group>
           <Form.Label className="d-none">Publisher</Form.Label>
           <Form.Control
-            type="text"
+            as="select"
             name="publisher"
             value={publisher}
             onChange={handleChange}
             placeholder="Publisher*"
+            aria-label="publisher"
             required
-          />
+          >
+            <option value="original content">Original Content</option>
+            <option value="the guardian">The Guardian</option>
+            <option value="daily mai">Daily Mail</option>
+            <option value="the independant">The Independant</option>
+            <option value="daily telegraph">Daily Telegraph</option>
+            <option value="daily express">Daily Express</option>
+            <option value="the sun">The Sun</option>
+            <option value="financial times">Financial Times</option>
+            <option value="metro">Metro</option> 
+            <option value="the times">The Times</option> 
+            <option value="other">Other</option> 
+          </Form.Control>
         </Form.Group> 
         <Form.Group>
           <Form.Label className="d-none">Subject</Form.Label>
           <Form.Control
-            type="text"
+            as="select"
             name="subject"
             value={subject}
             onChange={handleChange}
-            placeholder="Subject*"
+            aria-label="subject"
             required
-          />
-        </Form.Group>  
+          >
+            <option value="news">News</option>
+            <option value="sport">Sport</option>
+            <option value="culture">Culture</option>
+            <option value="opinion">Opinion</option>
+            <option value="lifestyle">Lifestyle</option>
+            <option value="reviews">Reviews</option>
+            <option value="travel">Travel</option>
+            <option value="other">Other</option>
+          </Form.Control>
+          
+        </Form.Group>
         <Form.Group>
           <Form.Label className="d-none">Title</Form.Label>
           <Form.Control

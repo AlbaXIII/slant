@@ -9,13 +9,14 @@ import LogoutForm from "./pages/account/LogoutForm";
 import SignUpForm from "./pages/account/SignUpForm";
 import ArticleCreateForm from "./pages/articles/ArticleCreateForm";
 import ArticleEditForm from "./pages/articles/ArticleEditForm";
+// import ProfilePage from "./pages/profiles/ProfilePage"
 import { useCurrentAuthUser } from "./contexts/AuthUserContext";
 import "./api/axiosDefaults";
 
 function App() {
 
   const currentUser = useCurrentAuthUser();
-  const profile_id = currentUser?.profile_id || "";
+  // const profile_id = currentUser?.profile_id || "";
 
   return (
     <div className={styles.App}>
@@ -23,12 +24,13 @@ function App() {
       <Container className={styles.Main}>
         <Switch>
           <Route exact path="/" render={() => <ArticlesPage />} />
+          <Route exact path="/articles/:id" render={() => <ArticlePage />} />
           <Route exact path="/login" render={() => <LoginForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/logout" render={() => <LogoutForm />} />
-          <Route exact path="/articles/create" render={() => <ArticleCreateForm />} />
+          <Route exact path="/create" render={() => <ArticleCreateForm />} />
           <Route exact path="/articles/:id/edit" render={() => <ArticleEditForm />} />
-          <Route exact path="/articles/:id" render={() => <ArticlePage />} />
+          <Route exact path="/profiles/:id" render={() => <h1>Profile Space!</h1>} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>
