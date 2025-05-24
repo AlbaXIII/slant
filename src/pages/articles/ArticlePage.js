@@ -11,6 +11,7 @@ import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Article from "./Article"
 import Comment from "../comments/Comment";
+import RatingForm from "../rating/RatingForm";
 
 function ArticlePage() {
   const { id } = useParams();
@@ -41,6 +42,9 @@ function ArticlePage() {
     <Row>
       <Col>
         <Article {...article.results[0]} setArticle={setArticle} ArticlePage />
+        <Container>
+          <RatingForm />
+        </Container>
         <Container>
           {currentUser ? (
             <CommentCreateForm

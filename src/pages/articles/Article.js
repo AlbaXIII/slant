@@ -78,7 +78,6 @@ const Article = (props) => {
         }
     };
 
-
     return (
         <Card border="secondary" className={styles.cards}>
             <Card.Body>
@@ -142,12 +141,16 @@ const Article = (props) => {
                 <Row>
                     {is_owner ? (
                         <Col>
-                            <Button variant="dark" onClick={handleEdit}>Edit</Button>
-                            <Button variant="dark" onClick={handleDelete}>Delete</Button>
+                            <Link onClick={handleEdit}>
+                                <i className="fas fa-edit" />
+                            </Link>
+                            <Link onClick={handleDelete}>
+                                <i className="fas fa-trash-alt" />
+                            </Link>
                         </Col>
                     ) : <Col>
-                            <Button className="d-none" variant="dark" onClick={handleEdit}>Edit</Button>
-                            <Button className="d-none" variant="dark" onClick={handleDelete}>Delete</Button>
+                            <>
+                            </>
                         </Col>}
                 </Row>
             </Card.Body>
