@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "../../styles/Article.module.css";
-import appStyles from "../../App.module.css";
 import { useCurrentAuthUser } from "../../contexts/AuthUserContext";
-import { Card, OverlayTrigger, Tooltip, Col, Row, Button } from "react-bootstrap";
+import { Card, OverlayTrigger, Tooltip, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -15,7 +14,6 @@ const Article = (props) => {
         comments_count,
         favourites_count,
         favourite_id,
-        rating_id,
         ratings_count,
         publisher,
         subject,
@@ -24,7 +22,6 @@ const Article = (props) => {
         body,
         image,
         created_on,
-        updated_on,
         articlePage,
         setArticles,
         showImageAndBody = true,
