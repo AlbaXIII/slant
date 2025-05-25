@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Navbar, Container, Nav, Form, Row, Col, Button } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../assets/slant-default-image_thumbnail.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";

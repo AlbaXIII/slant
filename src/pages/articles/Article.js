@@ -27,6 +27,7 @@ const Article = (props) => {
         updated_on,
         articlePage,
         setArticles,
+        showImageAndBody = true,
     } = props;
 
     const currentUser = useCurrentAuthUser();
@@ -87,21 +88,27 @@ const Article = (props) => {
                     </Link>
                     {publisher && <Card.Title><em>{publisher}</em></Card.Title>}
                 </span>
-                <span className={styles.maininfo}>
+                <span className={styles.maininfo}>     
                     {subject && <Card.Title>{subject}</Card.Title>}
-                    {title && <Card.Title className={styles.title}>{title}</Card.Title>}
+                    <Link to={`/articles/${id}`}>
+                        {title && <Card.Title className={styles.title}>{title}</Card.Title>}
+                    </Link>
                     <span>{link}</span>
                     <span>{created_on}</span>
                     {is_owner && articlePage && "..."}
                 </span>
             </Card.Body>
-            <Link to={`/articles/${id}`}>
-                <div>
-                    <Card.Img variant="top" src={image} alt={title}/>
-                </div>
-            </Link>
+
+                {showImageAndBody && (
+                <Link to={`/articles/${id}`}>
+                    <div>
+                        <Card.Img variant="top" src={image} alt={title}/>
+                    </div>
+                </Link>
+            )}
+
             <Card.Body>
-                {body && <Card.Text className={styles.body}>{body}</Card.Text>}
+                {showImageAndBody && body && <Card.Text className={styles.body}>{body}</Card.Text>}
                 <div>
                     {is_owner ? (
                         <OverlayTrigger

@@ -85,7 +85,7 @@ function ArticlesPage({ message, filter = "" }) {
             <Col>
 
                 <div>
-                    <h2>News, <em>Untilted</em></h2>
+                    <h1>News, <em>Untilted.</em></h1>
                 </div>
 
                 <Form 
@@ -162,8 +162,12 @@ function ArticlesPage({ message, filter = "" }) {
                     {articles.results.length ? (
                     <InfiniteScroll
                         children={articles.results.map((article) => (
-                        <Article key={article.id} {...article} setPosts={setArticles} />
-                        ))}
+                        <Article key={article.id} 
+                        {...article} 
+                        setPosts={setArticles}
+                        showImageAndBody={false} 
+                    />
+                    ))}
                         dataLength={articles.results.length}
                         loader="Loading..."
                         hasMore={!!articles.next}
