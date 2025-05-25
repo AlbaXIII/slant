@@ -5,6 +5,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { axiosReq } from "../../api/axiosDefaults";
 import Article from '../articles/Article'; 
 import { fetchMoreData } from "../../utils/utils";
+import { ProfileEditDropdown } from "../../components/MoreDropdown";
 
 function ProfilePage() {
     const [hasLoaded, setHasLoaded] = useState(false);
@@ -159,13 +160,12 @@ function ProfilePage() {
                 <Container>
                     {profile ? (
                         <>
-                            {/* Profile Header */}
+                            {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
                             <div className="text-center mb-4">
                                 <h3>{profile.owner}'s Profile</h3>
                                 {profile.bio && <p className="mb-3">{profile.bio}</p>}
                             </div>
 
-                            {/* Tabbed Navigation */}
                             <Tab.Container 
                                 activeKey={activeTab} 
                                 onSelect={(k) => setActiveTab(k)}

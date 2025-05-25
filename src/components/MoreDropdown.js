@@ -1,5 +1,6 @@
 import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   <i
@@ -37,3 +38,34 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
     </Dropdown>
   );
 };
+
+export const ProfileEditDropdown = ({ id }) => {
+  const history = useHistory();
+  return (
+    <Dropdown className="ml-auto" drop="left">
+      <Dropdown.Toggle as={ThreeDots} />
+      <Dropdown.Menu>
+        <Dropdown.Item
+          onClick={() => history.push(`/profiles/${id}/edit`)}
+          aria-label="edit-profile"
+        >
+          <i className="fas fa-edit" /> edit bio
+        </Dropdown.Item>
+        <Dropdown.Item
+          onClick={() => history.push(`/profiles/${id}/edit/username`)}
+          aria-label="edit-username"
+        >
+          <i className="far fa-id-card" />
+          change username
+        </Dropdown.Item>
+        <Dropdown.Item
+          onClick={() => history.push(`/profiles/${id}/edit/password`)}
+          aria-label="edit-password"
+        >
+          <i className="fas fa-key" />
+          change password
+        </Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  )
+}

@@ -7,6 +7,9 @@ import ArticlesPage from "./pages/articles/ArticlesPage";
 import LoginForm from "./pages/account/LoginForm";
 import LogoutForm from "./pages/account/LogoutForm";
 import SignUpForm from "./pages/account/SignUpForm";
+import UsernameForm from "./pages/profiles/UsernameForm";
+import UserPasswordForm from "./pages/profiles/UserPasswordForm";
+import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import ArticleCreateForm from "./pages/articles/ArticleCreateForm";
 import ArticleEditForm from "./pages/articles/ArticleEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage"
@@ -16,7 +19,6 @@ import "./api/axiosDefaults";
 function App() {
 
   const currentUser = useCurrentAuthUser();
-  // const profile_id = currentUser?.profile_id || "";
 
   return (
     <div className={styles.App}>
@@ -31,6 +33,21 @@ function App() {
           <Route exact path="/create" render={() => <ArticleCreateForm />} />
           <Route exact path="/articles/:id/edit" render={() => <ArticleEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+          <Route
+            exact
+            path="/profiles/:id/edit/username"
+            render={() => <UsernameForm />}
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit/password"
+            render={() => <UserPasswordForm />}
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit"
+            render={() => <ProfileEditForm />}
+          />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>

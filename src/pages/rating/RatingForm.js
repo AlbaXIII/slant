@@ -152,14 +152,6 @@ function RatingForm() {
               {submitMessage}
             </div>
           )}
-
-        </div>
-        <div>
-          {hasUserRated && userRating && (
-            <div>
-              {userRating.rating}/10
-            </div>
-          )} 
         </div>
       </form>
     </div>
