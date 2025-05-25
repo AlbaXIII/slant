@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Nav, Tab } from 'react-bootstrap';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { axiosReq } from "../../api/axiosDefaults";
 import Article from '../articles/Article'; 
@@ -9,8 +9,10 @@ import { fetchMoreData } from "../../utils/utils";
 function ProfilePage() {
     const [hasLoaded, setHasLoaded] = useState(false);
     const [profileArticles, setProfileArticles] = useState({ results: [] });
+    const [favouriteArticles, setfavouriteArticles] = useState({ results: [] });
     const [profile, setProfile] = useState(null);
     const [error, setError] = useState(null);
+    const [activeTab, setActiveTab] = useState('articles');
 
     const { id } = useParams();
 
@@ -22,9 +24,21 @@ function ProfilePage() {
                 }
             });
             return response.data;
-        } catch (error) {
-            console.error('Error fetching user articles:', error);
-            throw error;
+        } catch (err) {
+        console.log(err);
+        }
+    };
+
+    const getUserfavourites = async (userId) => {
+        try {
+            const response = await axiosReq.get(`/articles/`, { 
+                params: {
+                    favourites__owner__profile: userId  
+                }
+            });
+            return response.data;
+        } catch (err) {
+        console.log(err);
         }
     };
 
@@ -32,9 +46,8 @@ function ProfilePage() {
         try {
             const response = await axiosReq.get(`/profiles/${userId}/`);
             return response.data;
-        } catch (error) {
-            console.error('Error fetching user profile:', error);
-            throw error;
+        } catch (err) {
+        console.log(err);
         }
     };
 
@@ -47,12 +60,17 @@ function ProfilePage() {
                 const profileData = await getUserProfile(id);
                 setProfile(profileData);
                 
-                const articlesData = await getUserArticles(id);
+                const [articlesData, favouritesData] = await Promise.all([
+                    getUserArticles(id),
+                    getUserfavourites(id)
+                ]);
+                
                 setProfileArticles(articlesData);
+                setfavouriteArticles(favouritesData);
                 
                 setHasLoaded(true);
             } catch (err) {
-                console.error('Error loading profile data:', err);
+                console.log(err);
                 setError('Failed to load profile data');
                 setHasLoaded(true);
             }
@@ -63,28 +81,49 @@ function ProfilePage() {
         }
     }, [id]);
 
-    const mainProfilePosts = (
+        const userArticlesTab = (
         <>
-            <hr />
-            <p className="text-center">{profile?.owner || 'User'}'s posts</p>
-            <hr />
             {profileArticles.results?.length ? (
                 <InfiniteScroll
                     children={profileArticles.results.map((article) => (
                         <Article 
                             key={article.id} 
                             {...article} 
-                            setPosts={setProfileArticles} 
+                            setArticles={setProfileArticles} 
                         />
                     ))}
                     dataLength={profileArticles.results.length}
-                    loader={<div className="text-center">Loading...</div>}
+                    loader={<div className="text-center">Loading more art...</div>}
                     hasMore={!!profileArticles.next}
                     next={() => fetchMoreData(profileArticles, setProfileArticles)}
                 />
             ) : (
                 <Container className="text-center">
-                    <h4>User has not posted yet!</h4>
+                    <h4>{profile?.owner} hasn't posted any articles yet!</h4>
+                </Container>
+            )}
+        </>
+    );
+
+    const userfavouritesTab = (
+        <>
+            {favouriteArticles.results?.length ? (
+                <InfiniteScroll
+                    children={favouriteArticles.results.map((article) => (
+                        <Article 
+                            key={article.id} 
+                            {...article} 
+                            setArticles={setfavouriteArticles} 
+                        />
+                    ))}
+                    dataLength={favouriteArticles.results.length}
+                    loader={<div className="text-center">Loading more favourites...</div>}
+                    hasMore={!!favouriteArticles.next}
+                    next={() => fetchMoreData(favouriteArticles, setfavouriteArticles)}
+                />
+            ) : (
+                <Container className="text-center">
+                    <h4>{profile?.owner} hasn't favourited any articles yet!</h4>
                 </Container>
             )}
         </>
@@ -120,11 +159,39 @@ function ProfilePage() {
                 <Container>
                     {profile ? (
                         <>
-                            <div className="text-center mb-3">
+                            {/* Profile Header */}
+                            <div className="text-center mb-4">
                                 <h3>{profile.owner}'s Profile</h3>
-                                {profile.bio && <p>{profile.bio}</p>}
+                                {profile.bio && <p className="mb-3">{profile.bio}</p>}
                             </div>
-                            {mainProfilePosts}
+
+                            {/* Tabbed Navigation */}
+                            <Tab.Container 
+                                activeKey={activeTab} 
+                                onSelect={(k) => setActiveTab(k)}
+                            >
+                                <Nav variant="tabs" className="justify-content-center mb-4">
+                                    <Nav.Item>
+                                        <Nav.Link eventKey="articles">
+                                            Articles ({profileArticles.results?.length || 0})
+                                        </Nav.Link>
+                                    </Nav.Item>
+                                    <Nav.Item>
+                                        <Nav.Link eventKey="favourites">
+                                            Favourites ({favouriteArticles.results?.length || 0})
+                                        </Nav.Link>
+                                    </Nav.Item>
+                                </Nav>
+
+                                <Tab.Content>
+                                    <Tab.Pane eventKey="articles">
+                                        {userArticlesTab}
+                                    </Tab.Pane>
+                                    <Tab.Pane eventKey="favourites">
+                                        {userfavouritesTab}
+                                    </Tab.Pane>
+                                </Tab.Content>
+                            </Tab.Container>
                         </>
                     ) : (
                         <Container className="text-center">
