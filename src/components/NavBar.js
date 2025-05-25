@@ -12,11 +12,14 @@ const NavBar = () => {
 
   const authLinks = (
     <>
-      <NavLink to="/">
+      <NavLink to={"/create"}>
+        Create
+      </NavLink>
+      <NavLink to={`/profiles/${currentUser?.profile_id}`}>
         {currentUser?.username}
       </NavLink>
       <NavLink to="/logout" style={{ textDecoration: 'none' }}>
-          Logout
+        Logout
       </NavLink>
     </>
   )
