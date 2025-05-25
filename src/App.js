@@ -9,7 +9,7 @@ import LogoutForm from "./pages/account/LogoutForm";
 import SignUpForm from "./pages/account/SignUpForm";
 import ArticleCreateForm from "./pages/articles/ArticleCreateForm";
 import ArticleEditForm from "./pages/articles/ArticleEditForm";
-// import ProfilePage from "./pages/profiles/ProfilePage"
+import ProfilePage from "./pages/profiles/ProfilePage"
 import { useCurrentAuthUser } from "./contexts/AuthUserContext";
 import "./api/axiosDefaults";
 
@@ -30,7 +30,7 @@ function App() {
           <Route exact path="/logout" render={() => <LogoutForm />} />
           <Route exact path="/create" render={() => <ArticleCreateForm />} />
           <Route exact path="/articles/:id/edit" render={() => <ArticleEditForm />} />
-          <Route exact path="/profiles/:id" render={() => <h1>UNDER CONSTRUCTION</h1>} />
+          <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>
