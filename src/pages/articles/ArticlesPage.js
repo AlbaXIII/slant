@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 
 import Article from "./Article";
 
@@ -20,12 +21,15 @@ function ArticlesPage({ message, filter = "" }) {
     const { pathname } = useLocation();
 
     const [query, setQuery] = useState("");
+    const [selectedSubject, setSelectedSubject] = useState("all");
+    const [availableSubjects, setAvailableSubjects] = useState([]);
+    const [allArticles, setAllArticles] = useState({ results: [] });
 
     useEffect(() => {
         const fetchArticles = async () => {
             try {
                 const { data } = await axiosReq.get(`/articles/?${filter}search=${query}`);
-                setArticles(data);
+                setAllArticles(data);
                 setHasLoaded(true);
             } catch (err) {
                 console.log(err);
@@ -43,6 +47,38 @@ function ArticlesPage({ message, filter = "" }) {
         };
 
     }, [filter, query, pathname] )
+
+     useEffect(() => {
+        if (allArticles.results.length > 0) {
+            const subjects = [...new Set(
+                allArticles.results
+                    .map(article => article.subject)
+                    .filter(subject => subject && subject.trim() !== "")
+            )].sort();
+            
+            setAvailableSubjects(subjects);
+
+            if (selectedSubject === "all") {
+                setArticles(allArticles);
+            } else {
+                const filteredResults = allArticles.results.filter(
+                    article => article.subject === selectedSubject
+                );
+                setArticles({
+                    ...allArticles,
+                    results: filteredResults
+                });
+            }
+        } else {
+            setArticles(allArticles);
+        }
+    }, [allArticles, selectedSubject]);
+
+    const clearFilters = () => {
+        setSelectedSubject("all");
+        setQuery("");
+    };
+
 
     return (
         <Row>
@@ -65,6 +101,61 @@ function ArticlesPage({ message, filter = "" }) {
                     />
                 </Form>
                 
+                <div className="mb-4 mt-3">
+                    <div className="d-flex justify-content-between align-items-center mb-2">
+                        <h4 className="mb-0">Filter by Subject:</h4>
+                        {(selectedSubject !== "all" || query) && (
+                            <Button 
+                                variant="dark" 
+                                size="sm"
+                                onClick={clearFilters}
+                            >
+                                Clear Filters
+                            </Button>
+                        )}
+                    </div>
+                    
+                    <div className="d-flex flex-wrap gap-2">
+                        <Button
+                            variant={selectedSubject === "all" ? "dark" : "outline-secondary"}
+                            size="sm"
+                            onClick={() => setSelectedSubject("all")}
+                            className="mb-2"
+                        >
+                            All Subjects
+                        </Button>
+                        
+                        {availableSubjects.map((subject) => (
+                            <Button
+                                key={subject}
+                                variant={selectedSubject === subject ? "dark" : "outline-secondary"}
+                                size="sm"
+                                onClick={() => setSelectedSubject(subject)}
+                                className="mb-2"
+                            >
+                                {subject}
+                            </Button>
+                        ))}
+                    </div>
+                </div>
+
+                {(selectedSubject !== "all" || query) && (
+                    <div className="mb-3 p-2 bg-light rounded">
+                        <small className="text-muted">
+                            Active filters: 
+                            {selectedSubject !== "all" && (
+                                <span className="badge bg-primary ms-1 me-1">
+                                    Subject: {selectedSubject}
+                                </span>
+                            )}
+                            {query && (
+                                <span className="badge bg-info ms-1">
+                                    Search: "{query}"
+                                </span>
+                            )}
+                        </small>
+                    </div>
+                )}
                 
                 {hasLoaded ? (
                 <>
@@ -80,7 +171,15 @@ function ArticlesPage({ message, filter = "" }) {
                     />
                     ) : (
                     <Container>
-                        No results.
+                                <div className="text-center py-5">
+                                    <h4>No articles found</h4>
+                                    <p className="text-muted">
+                                        {selectedSubject !== "all" || query 
+                                            ? "Try adjusting your filters or search terms"
+                                            : "No articles available at the moment"
+                                        }
+                                    </p>
+                                </div>
                     </Container>
                     )}
                 </>
