@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { useRedirect } from "../../hooks/useRedirect";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -17,7 +18,7 @@ import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
 function ArticleCreateForm() {
-
+  useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
   // const currentUser = useCurrentAuthUser;
 
