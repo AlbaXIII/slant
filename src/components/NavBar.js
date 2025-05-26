@@ -3,11 +3,14 @@ import logo from "../assets/slant-default-image_thumbnail.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
 import { useCurrentAuthUser } from "../contexts/AuthUserContext";
+import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
 
 const NavBar = () => {
   
   const currentUser = useCurrentAuthUser();
+
+  const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
   const authLinks = (
     <>
@@ -35,7 +38,7 @@ const NavBar = () => {
   )
 
   return (
-    <Navbar expand="md" fixed="top" className={styles.navbar}>
+    <Navbar expanded={expanded} expand="md" fixed="top" className={styles.navbar}>
       <Container>
         <Navbar.Brand>
           <NavLink to="/" style={{ textDecoration: 'none' }}>
@@ -43,7 +46,11 @@ const NavBar = () => {
             <h2 className={styles.maintitle}>slant.</h2>
           </NavLink>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle
+          ref={ref}
+          onClick={() => setExpanded(!expanded)}
+          aria-controls="basic-navbar-nav"
+        />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-right">
             {currentUser ? authLinks : nonAuthLinks}
