@@ -12,7 +12,8 @@ import Alert from "react-bootstrap/Alert";
 
 import { useSetCurrentAuthUser } from "../../contexts/AuthUserContext";
 
-import { useRedirect } from "../../hooks/useRedirect"
+import { useRedirect } from "../../hooks/useRedirect";
+import { setTokenTimestamp } from "../../utils/utils";
 
 function LoginForm(){
 
@@ -35,7 +36,8 @@ function LoginForm(){
         event.preventDefault();
         try {
             const { data } = await axios.post("/dj-rest-auth/login/", loginData)
-            setCurrentAuthUser(data.user)
+            setCurrentAuthUser(data.user);
+            setTokenTimestamp(data);
             history.goBack();
         } catch (err) {
             setErrors(err.response?.data)

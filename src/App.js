@@ -13,8 +13,10 @@ import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import ArticleCreateForm from "./pages/articles/ArticleCreateForm";
 import ArticleEditForm from "./pages/articles/ArticleEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage"
+import NotFound from "./components/NotFound";
 import { useCurrentAuthUser } from "./contexts/AuthUserContext";
 import "./api/axiosDefaults";
+
 
 function App() {
 
@@ -48,7 +50,7 @@ function App() {
             path="/profiles/:id/edit"
             render={() => <ProfileEditForm />}
           />
-          <Route render={() => <p>Page not found!</p>} />
+          <Route render={() => <NotFound />} />
         </Switch>
       </Container>
     </div>

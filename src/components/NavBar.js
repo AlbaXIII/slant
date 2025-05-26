@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 import { useCurrentAuthUser } from "../contexts/AuthUserContext";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
-
 const NavBar = () => {
   
   const currentUser = useCurrentAuthUser();

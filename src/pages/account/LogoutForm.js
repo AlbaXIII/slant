@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 import styles from "../../styles/LogoutForm.module.css"
 
 import { useSetCurrentAuthUser } from "../../contexts/AuthUserContext";
+import { removeTokenTimestamp } from "../../utils/utils";
 
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -20,6 +21,7 @@ function LogoutForm(){
         try {
             await axios.post("dj-rest-auth/logout/");
             setCurrentAuthUser(null);
+            removeTokenTimestamp();
             history.push("/");
             } catch (err) {
             console.log(err);
