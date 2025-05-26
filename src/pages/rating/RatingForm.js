@@ -1,11 +1,11 @@
 import React, {useState, useCallback, useEffect } from "react";
+import Button from "react-bootstrap/Button";
 import { useParams } from "react-router";
 import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 import { useCurrentAuthUser } from "../../contexts/AuthUserContext";
 
 
 function RatingForm() {
-
   const { id } = useParams();
   const [rating, setRating] = useState(5);
   const [averageRating, setAverageRating] = useState(0);
@@ -126,14 +126,15 @@ function RatingForm() {
             <span>(Right)</span>
           </div>
           
-          <button
+          <Button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full py-3 px-4 rounded-md font-medium transition-colors ${
+            variant="dark"
+            className={`font-medium ${
               isSubmitting
-                ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-blue-600 hover:bg-blue-700 active:bg-blue-800'
-            } text-white`}
+                ? 'cursor-not-allowed'
+                : 'hover:bg-blue-700 active:bg-blue-800'
+            } text-black`}
           >
             {isSubmitting 
               ? 'Submitting...' 
@@ -141,7 +142,7 @@ function RatingForm() {
                 ? 'Update Rating' 
                 : 'Submit Rating'
             }
-          </button>
+          </Button>
           
           {submitMessage && (
             <div className={`p-3 rounded-md text-sm ${

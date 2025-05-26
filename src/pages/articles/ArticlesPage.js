@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import Article from "./Article";
 
 import styles from "../../styles/ArticlesPage.module.css";
+
 import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
@@ -88,6 +89,10 @@ function ArticlesPage({ message, filter = "" }) {
                     <h1>News, <em>Untilted.</em></h1>
                 </div>
 
+                <div>
+                    <h2>Stories without the <em>noise.</em></h2>
+                </div>
+
                 <Form 
                 className={styles.SearchBar}
                 onSubmit={(event) => event.preventDefault()}
@@ -101,18 +106,20 @@ function ArticlesPage({ message, filter = "" }) {
                     />
                 </Form>
                 
-                <div className="mb-4 mt-3">
+                <div className={styles.subjectpane}>
                     <div className="d-flex justify-content-between align-items-center mb-2">
-                        <h4 className="mb-0">Filter by Subject:</h4>
-                        {(selectedSubject !== "all" || query) && (
-                            <Button 
-                                variant="dark" 
-                                size="sm"
-                                onClick={clearFilters}
-                            >
-                                Clear Filters
-                            </Button>
-                        )}
+                        <h4 className="mb-0 justify-content-center">Filter by Subject:</h4>
+                            <div className="text-center">
+                                {(selectedSubject !== "all" || query) && (
+                                    <Button 
+                                        variant="dark" 
+                                        size="m"
+                                        onClick={clearFilters}
+                                    >
+                                        Clear Filters
+                                    </Button>
+                                )}
+                            </div>
                     </div>
                     
                     <div className="d-flex flex-wrap gap-2">

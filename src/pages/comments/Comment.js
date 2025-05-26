@@ -7,8 +7,7 @@ import { MoreDropdown } from "../../components/MoreDropdown";
 import { useCurrentAuthUser } from "../../contexts/AuthUserContext";
 import { axiosRes } from "../../api/axiosDefaults"
 
-const Comment = (props) => {
-  
+const Comment = (props) => {  
   const { profile_id, owner, updated_on, body, id, setArticle, setComments, } = props;
 
   const [showEditForm, setShowEditForm] = useState(false);
@@ -42,8 +41,7 @@ const Comment = (props) => {
           {owner}
         </Link>
         <Media.Body className="align-self-center ml-2">
-          <span className={styles.Owner}>{owner}</span>
-          <span className={styles.Date}>{updated_on}</span>
+          <span><em>{updated_on}</em></span>
           {showEditForm ? (
             <CommentEditForm
               id={id}

@@ -3,6 +3,7 @@
   background-color: #f3efe8;
   min-height: 100vh;
   text-decoration: none;
+  background-image: url(../src/assets/slant-background.webp);
 }
 
 .Main {
@@ -18,8 +19,9 @@
   float: right;
 }
 
-.Card {
-  background-color:#bba591;
+a {
+  color: #555555;
+  transition: color ease-in-out 0.3s;
 }
 
 a:hover {
@@ -31,5 +33,14 @@ a:hover {
   background-color: #ffffff;
   padding: 10px;
   border-radius: 2px;
-  border: 1px solid #dadadf;
+  border: 1px solid #333;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+figure {
+  text-align: center;
+  display: inline-block;
 }

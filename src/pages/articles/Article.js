@@ -14,7 +14,6 @@ const Article = (props) => {
         comments_count,
         favourites_count,
         favourite_id,
-        ratings_count,
         publisher,
         subject,
         link,
@@ -78,24 +77,6 @@ const Article = (props) => {
 
     return (
         <Card border="secondary" className={styles.cards}>
-            <Card.Body>
-                <span className={styles.profileinfo}> 
-                    <Link to={`/profiles/${profile_id}`}>
-                        <b>{owner}</b>
-                    </Link>
-                    {publisher && <Card.Title><em>{publisher}</em></Card.Title>}
-                </span>
-                <span className={styles.maininfo}>     
-                    {subject && <Card.Title>{subject}</Card.Title>}
-                    <Link to={`/articles/${id}`}>
-                        {title && <Card.Title className={styles.title}>{title}</Card.Title>}
-                    </Link>
-                    <span>{link}</span>
-                    <span>{created_on}</span>
-                    {is_owner && articlePage && "..."}
-                </span>
-            </Card.Body>
-
                 {showImageAndBody && (
                 <Link to={`/articles/${id}`}>
                     <div>
@@ -103,6 +84,23 @@ const Article = (props) => {
                     </div>
                 </Link>
             )}
+            <Card.Body>
+                <div className={styles.profileinfo}> 
+                    <Link to={`/profiles/${profile_id}`}>
+                        <b>{owner}</b>
+                    </Link>
+                    {publisher && <Card.Title><em>{publisher}</em></Card.Title>}
+                </div>
+                <div className={styles.maininfo}>     
+                    {subject && <Card.Title>{subject}</Card.Title>}
+                    <Link to={`/articles/${id}`}>
+                        {title && <Card.Title className={styles.title}>{title}</Card.Title>}
+                    </Link>
+                    <div>{link}</div>
+                    <div>{created_on}</div>
+                    {is_owner && articlePage && "..."}
+                </div>
+            </Card.Body>
 
             <Card.Body>
                 {showImageAndBody && body && <Card.Text className={styles.body}>{body}</Card.Text>}
@@ -135,10 +133,6 @@ const Article = (props) => {
                         <i className="fa-solid fa-comments"></i>
                     </Link>
                     {comments_count}
-                    <Link to={`/articles/${id}`}>
-                        <i className="fa-solid fa-gauge"></i>
-                    </Link>
-                    {ratings_count}
                 </div>
             </Card.Body>
             <Card.Body>
