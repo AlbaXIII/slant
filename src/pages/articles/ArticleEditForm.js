@@ -23,11 +23,12 @@ function ArticleEditForm() {
     publisher: "",
     subject: "",
     title: "",
+    link: "",
     body: "",
     image: "",
   });
 
-  const { publisher, subject, title, body, image } = articleData;
+  const { publisher, subject, title, link, body, image } = articleData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -37,9 +38,9 @@ function ArticleEditForm() {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/articles/${id}/`);
-        const { publisher, subject, title, body, image, is_owner } = data;
+        const { publisher, subject, title, link, body, image, is_owner } = data;
 
-        is_owner ? setArticleData({ publisher, subject, title, body, image }) : history.push("/");
+        is_owner ? setArticleData({ publisher, subject, title, link, body, image }) : history.push("/");
       } catch (err) {
         console.log(err);
       }
@@ -72,6 +73,7 @@ function ArticleEditForm() {
     formData.append("publisher", publisher)
     formData.append("subject", subject)
     formData.append("title", title)
+    formData.append("link", link)
     formData.append("body", body)
     formData.append("image", imageInput.current.files[0]);
 
@@ -123,6 +125,16 @@ function ArticleEditForm() {
             placeholder="Title*"
             onChange={handleChange}
             required
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label className="d-none">Link</Form.Label>
+          <Form.Control
+          type="text"
+          name="link"
+          value={link}
+          placeholder="Link"
+          onChange={handleChange}
           />
         </Form.Group>
         <Form.Group>
