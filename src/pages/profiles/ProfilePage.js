@@ -176,12 +176,12 @@ function ProfilePage() {
                             >
                                 <Nav variant="tabs">
                                     <Nav.Item>
-                                        <Nav.Link eventKey="articles">
+                                        <Nav.Link eventKey="articles" className={styles.tabs}>
                                             Articles ({profileArticles.results?.length || 0})
                                         </Nav.Link>
                                     </Nav.Item>
                                     <Nav.Item>
-                                        <Nav.Link eventKey="favourites">
+                                        <Nav.Link eventKey="favourites" className={styles.tabs}>
                                             Favourites ({favouriteArticles.results?.length || 0})
                                         </Nav.Link>
                                     </Nav.Item>

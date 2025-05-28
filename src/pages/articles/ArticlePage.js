@@ -59,8 +59,6 @@ function ArticlePage() {
               setArticle={setArticle}
               setComments={setComments}
             />
-          ) : comments.results.length ? (
-            "Comments"
           ) : null}
           {comments.results.length ? (
             comments.results.map((comment) => (

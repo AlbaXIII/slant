@@ -107,8 +107,8 @@ const Article = (props) => {
 
                     <ListGroup.Item className={styles.maininfo}>
                         {subject && (
-                            <div className="mb-2">
-                                <span className="badge bg-secondary">{subject}</span>
+                            <div className={styles.subjectbadge}>
+                                <span className="badge bg-secondary ms-2 me-2 text-white">{subject}</span>
                             </div>
                         )}
                         {title && <Card.Title className={styles.title}>{title}</Card.Title>}
@@ -190,8 +190,8 @@ const Article = (props) => {
                             </div>
                         )}
                         {subject && (
-                            <div className="mb-2">
-                                <span className="badge bg-secondary">{subject}</span>
+                            <div className={styles.subjectbadge}>
+                                <span className="badge bg-secondary ms-2 me-2 text-white">{subject}</span>
                             </div>
                         )}
                         {publisher && (

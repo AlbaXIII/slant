@@ -149,19 +149,19 @@ function ArticlesPage({ message, filter = "" }) {
 
                 {(selectedSubject !== "all" || query) && (
                     <div className="mb-3 p-2 bg-light rounded">
-                        <small className="text-muted">
+                        <large>
                             Active filters: 
                             {selectedSubject !== "all" && (
-                                <span className="badge bg-primary ms-1 me-1">
-                                    Subject: {selectedSubject}
+                                <span className="badge bg-secondary ms-2 me-2 text-white">
+                                    {selectedSubject}
                                 </span>
                             )}
                             {query && (
-                                <span className="badge bg-info ms-1">
+                                <span className="badge bg-secondary ms-2 me-2 text-white">
                                     Search: "{query}"
                                 </span>
                             )}
-                        </small>
+                        </large>
                     </div>
                 )}
                 

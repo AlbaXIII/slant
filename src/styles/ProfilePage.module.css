@@ -6,6 +6,11 @@
     padding-bottom: 5px;
 }
 
+.tabs {
+    background-color: #f3efe8;
+    border: 1px solid black;
+}
+
 .profileheader h3 {
     margin-top: 15px;
 }

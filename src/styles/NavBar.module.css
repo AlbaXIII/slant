@@ -3,6 +3,17 @@
     border-bottom: 1px solid black;
 }
 
+.togglebutton {
+    width: 30px !important;
+    height: 30px !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+.toggleButton:focus {
+    box-shadow: none !important;
+}
+
 .brand {
     margin-right: 5px;
 }
@@ -20,23 +31,8 @@
     font-weight: bold;
 }
 
-.upload {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    size: 300%;
-    margin-top: 10px;
-    color: black;
-}
-
 .upload:hover{
     font-weight: bold;
-}
-
-.tagline {
-    margin-left: 10px;
-
 }
 
 a {

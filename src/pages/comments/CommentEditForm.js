@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
+import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+
 import { axiosRes } from "../../api/axiosDefaults";
 
 function CommentEditForm(props) {
@@ -43,23 +45,24 @@ function CommentEditForm(props) {
           as="textarea"
           value={formBody}
           onChange={handleChange}
-          rows={2}
+          rows={4}
+          cols={50}
         />
       </Form.Group>
       <div className="text-right">
-        <button
+        <Button
           variant="dark"
           onClick={() => setShowEditForm(false)}
           type="button"
         >
           cancel
-        </button>
-        <button
+        </Button>
+        <Button
           variant="dark"
           type="submit"
         >
           save
-        </button>
+        </Button>
       </div>
     </Form>
   );
