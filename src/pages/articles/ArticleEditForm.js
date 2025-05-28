@@ -75,7 +75,6 @@ function ArticleEditForm() {
     formData.append("title", title)
     formData.append("link", link)
     formData.append("body", body)
-    formData.append("image", imageInput.current.files[0]);
 
     if (imageInput?.current?.files[0]) {
       formData.append("image", imageInput.current.files[0]);

@@ -5,7 +5,7 @@ import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Link } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router";
 import { MoreDropdown } from "../../components/MoreDropdown";
 
 const Article = (props) => {
@@ -38,7 +38,7 @@ const Article = (props) => {
     const handleDelete = async () => {
         try {
         await axiosRes.delete(`/articles/${id}/`);
-        history.goBack();
+        history.push("/");
         } catch (err) {
         console.log(err);
         }

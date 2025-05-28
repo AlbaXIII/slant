@@ -7,6 +7,8 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 
+import styles from "../../styles/UsernameForm.module.css"
+
 import { useHistory, useParams } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import {
@@ -52,38 +54,42 @@ const UsernameForm = () => {
     };
 
     return (
-        <Row>
-            <Col className="py-2 mx-auto text-center" md={6}>
-                <Container className={appStyles.Content}>
-                    <Form onSubmit={handleSubmit} className="my-2">
-                        <Form.Group>
-                            <Form.Label>change username</Form.Label>
-                            <Form.Control
-                                placeholder="username"
-                                type="text"
-                                value={username}
-                                onChange={(event) => setUsername(event.target.value)}
-                            />
-                        </Form.Group>
-                        {errors?.username?.map((message, idx) => (
-                            <Alert key={idx} variant="warning">
-                                {message}
-                            </Alert>
-                        ))}
-                        <Button
-                            onClick={() => history.goBack()}
-                        >
-                        cancel
-                        </Button>
-                        <Button
-                            type="submit"
-                        >
-                        save
-                        </Button>
-                    </Form>
-                </Container>
-            </Col>
-        </Row>
+        <div className={styles.userform}>
+            <Row>
+                <Col>
+                    <Container>
+                        <Form onSubmit={handleSubmit}>
+                            <Form.Group>
+                                <Form.Label>change username</Form.Label>
+                                <Form.Control
+                                    placeholder="username"
+                                    type="text"
+                                    value={username}
+                                    onChange={(event) => setUsername(event.target.value)}
+                                />
+                            </Form.Group>
+                            {errors?.username?.map((message, idx) => (
+                                <Alert key={idx} variant="warning">
+                                    {message}
+                                </Alert>
+                            ))}
+                            <Button
+                                variant="dark"
+                                onClick={() => history.goBack()}
+                            >
+                            cancel
+                            </Button>
+                            <Button
+                                variant="dark"
+                                type="submit"
+                            >
+                            save
+                            </Button>
+                        </Form>
+                    </Container>
+                </Col>
+            </Row>
+        </div>
     );
 };
 
