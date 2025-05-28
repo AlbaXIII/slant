@@ -26,11 +26,12 @@ function ArticleCreateForm() {
     publisher: "",
     subject: "",
     title: "",
+    link:"",
     body: "",
     image: "",
   });
 
-  const { publisher, subject, title, body, image, } = articleData;
+  const { publisher, subject, title, link, body, image, } = articleData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -59,6 +60,7 @@ function ArticleCreateForm() {
     formData.append("publisher", publisher)
     formData.append("subject", subject)
     formData.append("title", title)
+    formData.append("link", link)
     formData.append("body", body)
     formData.append("image", imageInput.current.files[0]);
 
@@ -129,6 +131,16 @@ function ArticleCreateForm() {
             placeholder="Title*"
             onChange={handleChange}
             required
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label className="d-none">Link</Form.Label>
+          <Form.Control
+            type="text"
+            name="link"
+            value={link}
+            placeholder="Link"
+            onChange={handleChange}
           />
         </Form.Group>
         <Form.Group>

@@ -27,7 +27,7 @@ function ArticlePage() {
       try {
         const [{ data: article }, { data: comments }] = await Promise.all([
           axiosReq.get(`/articles/${id}`),
-          axiosReq.get(`/comments/?articles=${id}`),
+          axiosReq.get(`/comments/?article=${id}`),
         ]);
         setArticle({ results: [article] });
         console.log(article);
