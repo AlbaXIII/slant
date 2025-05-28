@@ -18,3 +18,10 @@
 .profileheader p {
     margin-bottom: 2px;
 }
+
+.nofaves {
+    background-color: #f3efe8;
+    border: 1px solid black;
+    margin-top: 10px;
+    font-size: 1.7rem;
+}

@@ -102,7 +102,7 @@ function ProfilePage() {
                 />
             ) : (
                 <Container className="text-center">
-                    <h4>{profile?.owner} hasn't posted any articles yet!</h4>
+                    <h4 className={styles.nofaves}>{profile?.owner} hasn't posted any articles yet!</h4>
                 </Container>
             )}
         </>
@@ -126,7 +126,7 @@ function ProfilePage() {
                 />
             ) : (
                 <Container className="text-center">
-                    <h4>{profile?.owner} hasn't favourited any articles yet!</h4>
+                    <h4 className={styles.nofaves}>{profile?.owner} hasn't favourited any articles yet!</h4>
                 </Container>
             )}
         </>

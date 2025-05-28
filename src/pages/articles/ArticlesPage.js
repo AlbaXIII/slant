@@ -183,7 +183,7 @@ function ArticlesPage({ message, filter = "" }) {
                     />
                     ) : (
                     <Container>
-                                <div className="text-center py-5">
+                                <div className={styles.noresults}>
                                     <h4>No articles found</h4>
                                     <p className="text-muted">
                                         {selectedSubject !== "all" || query 

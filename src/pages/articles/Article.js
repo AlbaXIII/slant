@@ -97,8 +97,8 @@ const Article = (props) => {
                 <ListGroup>
                     <ListGroup.Item>
                         <Link to={`/profiles/${profile_id}`}>
-                            <span><strong>{owner}</strong></span>
-                            <span>{created_on}</span>
+                            <span className={styles.owner}><strong>{owner}</strong></span>
+                            <span className={styles.createdon}><em>{created_on}</em></span>
                         </Link>
                     </ListGroup.Item>
 
@@ -115,10 +115,10 @@ const Article = (props) => {
                             </Card.Subtitle>
                         )}
                         {link && (
-                            <div className="mb-3">
-                                <Link to={link}>
+                            <div className={styles.link}>
+                                <a href={link} target="_blank" rel="noreferrer">
                                     <span>{link}</span>
-                                </Link>
+                                </a>
                             </div>
                         )}
                     </ListGroup.Item>
@@ -176,10 +176,10 @@ const Article = (props) => {
                 <div className="d-flex justify-content-between align-items-start">
                     <div className="flex-grow-1 me-3">
                         <div className="mb-2">
-                            <Link to={`/profiles/${profile_id}`} className="text-decoration-none">
+                            <Link to={`/profiles/${profile_id}`} className={styles.owner}>
                                 <strong>{owner}</strong>
                             </Link>
-                            <div className="text-muted small">{created_on}</div>
+                            <div className={styles.createdon}>{created_on}</div>
                         </div>   
                         {title && (
                             <div className="mb-2">
@@ -201,10 +201,10 @@ const Article = (props) => {
                             </div>
                         )}
                         {link && (
-                            <div className="mb-3">
-                                <Link to={link}>
+                            <div className={styles.link}>
+                                <a href={link} target="_blank" rel="noreferrer">
                                     <span>{link}</span>
-                                </Link>
+                                </a>
                             </div>
                         )}
                     </div>

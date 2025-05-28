@@ -9,7 +9,7 @@
 .title {
     font-weight: bolder;
     text-decoration: underline;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: #0E1C4F;
 }
 
@@ -17,6 +17,14 @@
     display: flex;
     float: left;
     flex-direction: row;
+}
+
+.owner {
+    font-size: 1.5rem;
+}
+
+.createdon {
+    font-size: 1rem;
 }
 
 .maininfo {
@@ -29,6 +37,12 @@
 
 .imagecontainer {
     text-align: right;
+}
+
+.link {
+    margin-bottom: 3px;
+    color: #336659;
+    font-weight: bold;
 }
 
 .body {

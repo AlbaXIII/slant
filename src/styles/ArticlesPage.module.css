@@ -32,3 +32,10 @@
     width: 75%;
 }
 
+.noresults {
+    border: 1px solid black;
+    background-color: #f3efe8;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
