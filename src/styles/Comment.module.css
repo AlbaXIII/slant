@@ -1,0 +1,9 @@
+.commentbody {
+    margin-left: 5px;
+    font-size: 1.3rem;
+    align-self: center;
+}
+
+.commentbody span {
+    font-size: 1rem;
+}

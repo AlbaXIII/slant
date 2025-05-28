@@ -1,0 +1,15 @@
+.profileheader {
+    background-color: #f3efe8;
+    border: 1px solid black;
+    text-align: center;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+.profileheader h3 {
+    margin-top: 15px;
+}
+
+.profileheader p {
+    margin-bottom: 2px;
+}

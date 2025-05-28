@@ -1,0 +1,9 @@
+.ratingform {
+    background-color: #f3efe8;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 1.4rem;
+    margin-top: 5px;
+    width: 100%;
+    padding-bottom: 5px;
+}

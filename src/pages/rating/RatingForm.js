@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import { useParams } from "react-router";
 import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 import { useCurrentAuthUser } from "../../contexts/AuthUserContext";
+import styles from "../../styles/RatingForm.module.css";
 
 
 function RatingForm() {
@@ -88,7 +89,7 @@ function RatingForm() {
     }, [rating, id, hasUserRated, userRating]);
 
   return (
-    <div>
+    <div className={styles.ratingform}>
       <div>
         <label>
           Average Rating: {averageRating.toFixed(1)}
@@ -119,11 +120,9 @@ function RatingForm() {
           />
           <hr></hr>
           <div>
-            <span>(Left)</span>
             <span>
               Your Rating:{rating}/10
             </span>
-            <span>(Right)</span>
           </div>
           
           <Button

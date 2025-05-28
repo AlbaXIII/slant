@@ -46,11 +46,12 @@ function CommentCreateForm(props) {
       <Form.Group>
         <InputGroup>
           <Form.Control
-            placeholder="add to the conversation"
+            placeholder="thoughts & feelings..."
             as="textarea"
             value={body}
             onChange={handleChange}
             rows={4}
+            cols={50}
           />
         </InputGroup>
       </Form.Group>
@@ -59,7 +60,7 @@ function CommentCreateForm(props) {
         type="submit"
         variant="dark"
       >
-        post
+        submit
       </Button>
     </Form>
   );

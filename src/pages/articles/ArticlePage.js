@@ -7,6 +7,8 @@ import Container from "react-bootstrap/Container";
 import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentAuthUser } from "../../contexts/AuthUserContext";
 
+import styles from "../../styles/ArticlePage.module.css";
+
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Article from "./Article"
@@ -41,11 +43,15 @@ function ArticlePage() {
   return (
     <Row>
       <Col>
-        <Article {...article.results[0]} setArticle={setArticle} ArticlePage />
+        <Article 
+          {...article.results[0]} 
+          setArticle={setArticle} 
+          articlePage={true}
+        />
         <Container>
           <RatingForm />
         </Container>
-        <Container>
+        <Container className={styles.comments}>
           {currentUser ? (
             <CommentCreateForm
               profile_id={currentUser.profile_id}
@@ -68,7 +74,7 @@ function ArticlePage() {
           ) : currentUser ? (
             <span>Be the first to comment!</span>
           ) : (
-            <span>No comments... yet</span>
+            <span>No comments... yet.</span>
           )}
         </Container>
       </Col>

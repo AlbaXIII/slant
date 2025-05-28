@@ -1,10 +1,20 @@
 import React from "react";
 
+import Container from "react-bootstrap/Container"
+import { Link } from "react-router-dom";
+
+import styles from "../styles/NotFound.module.css"
+
 const NotFound = () => {
     return (
-        <div>
-            <h2>Sorry, the page you're looking for doesn't exist</h2>
-        </div>
+        <Container className={styles.notfound}>
+            <div>
+                <h2>Sorry, the page you're looking for doesn't exist!</h2>
+                <Link to={"/"}>
+                    <h3><b>Click here to return home.</b></h3>
+                </Link>
+            </div>
+        </Container>
     );
 };
 

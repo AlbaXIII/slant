@@ -38,10 +38,11 @@ const Comment = (props) => {
       <hr />
       <Media>
         <Link to={`/profiles/${profile_id}`}>
-          {owner}
+          <div>
+            <b>{owner} |</b>
+          </div>
         </Link>
-        <Media.Body className="align-self-center ml-2">
-          <span><em>{updated_on}</em></span>
+        <Media.Body className={styles.commentbody}>
           {showEditForm ? (
             <CommentEditForm
               id={id}
@@ -53,6 +54,7 @@ const Comment = (props) => {
           ) : (
             <p>{body}</p>
           )}
+          <span><em>{updated_on}</em></span>
         </Media.Body>
           {is_owner && !showEditForm && (
           <MoreDropdown

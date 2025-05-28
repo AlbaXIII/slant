@@ -6,6 +6,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import Article from '../articles/Article'; 
 import { fetchMoreData } from "../../utils/utils";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import styles from "../../styles/ProfilePage.module.css"
 
 function ProfilePage() {
     const [hasLoaded, setHasLoaded] = useState(false);
@@ -82,7 +83,7 @@ function ProfilePage() {
         }
     }, [id]);
 
-        const userArticlesTab = (
+    const userArticlesTab = (
         <>
             {profileArticles.results?.length ? (
                 <InfiniteScroll
@@ -133,7 +134,7 @@ function ProfilePage() {
     if (!hasLoaded && !error) {
         return (
             <Row>
-                <Col className="py-2 p-0 p-lg-2" lg={8}>
+                <Col>
                     <Container className="text-center">
                         <div>Loading profile...</div>
                     </Container>
@@ -145,7 +146,7 @@ function ProfilePage() {
     if (error) {
         return (
             <Row>
-                <Col className="py-2 p-0 p-lg-2" lg={8}>
+                <Col>
                     <Container className="text-center">
                         <h4>Error: {error}</h4>
                     </Container>
@@ -155,22 +156,24 @@ function ProfilePage() {
     }
 
     return (
-        <Row>
-            <Col className="py-2 p-0 p-lg-2" lg={8}>
-                <Container>
+        <Container>
+            <Row>
+                <Col>
                     {profile ? (
                         <>
-                            {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
-                            <div className="text-center mb-4">
+                            <div className={styles.profileheader}>
                                 <h3>{profile.owner}'s Profile</h3>
-                                {profile.bio && <p className="mb-3">{profile.bio}</p>}
+                                {profile.bio && <p>{profile.bio}</p>}
+                                <Container>
+                                    {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
+                                </Container>
                             </div>
 
                             <Tab.Container 
                                 activeKey={activeTab} 
                                 onSelect={(k) => setActiveTab(k)}
                             >
-                                <Nav variant="tabs" className="justify-content-center mb-4">
+                                <Nav variant="tabs">
                                     <Nav.Item>
                                         <Nav.Link eventKey="articles">
                                             Articles ({profileArticles.results?.length || 0})
@@ -193,14 +196,14 @@ function ProfilePage() {
                                 </Tab.Content>
                             </Tab.Container>
                         </>
-                    ) : (
-                        <Container className="text-center">
+                        ) : (
+                        <Container>
                             <h4>User profile not found!</h4>
                         </Container>  
                     )}
-                </Container>
-            </Col>
-        </Row>
+                </Col>
+            </Row>
+        </Container>
     );
 }
 

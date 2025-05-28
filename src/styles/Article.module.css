@@ -2,17 +2,11 @@
     font-size: 2rem;
 }
 
-.cards {
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
 .title {
     font-weight: bolder;
     text-decoration: underline;
     font-size: 1.4rem;
+    color: #0E1C4F
 }
 
 .profileinfo {
@@ -22,9 +16,7 @@
 }
 
 .maininfo {
-    display: flex;
-    float: left;
-    flex-direction: row;
+    text-align: center;
 }
 
 .imagecontainer {
@@ -33,4 +25,9 @@
 
 .body {
     font-size: 1.2rem;
+}
+
+.engagement {
+    gap: 3px;
+    margin-top: 3px;
 }

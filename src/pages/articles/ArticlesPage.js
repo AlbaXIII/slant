@@ -84,15 +84,15 @@ function ArticlesPage({ message, filter = "" }) {
     return (
         <Row>
             <Col>
+                <Container className={styles.mainheaders}>
+                    <div>
+                        <h1>News, <em>Untilted.</em></h1>
+                    </div>
 
-                <div>
-                    <h1>News, <em>Untilted.</em></h1>
-                </div>
-
-                <div>
-                    <h2>Stories without the <em>noise.</em></h2>
-                </div>
-
+                    <div>
+                        <h2>Stories without the <em>noise.</em></h2>
+                    </div>
+                </Container>
                 <Form 
                 className={styles.SearchBar}
                 onSubmit={(event) => event.preventDefault()}
