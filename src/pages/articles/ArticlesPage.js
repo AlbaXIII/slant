@@ -123,7 +123,7 @@ function ArticlesPage({ message, filter = "" }) {
                             </div>
                     </div>
                     
-                    <div className="d-flex flex-wrap gap-2">
+                    <div className="d-flex flex-wrap p5 justify-content-center">
                         <Button
                             variant={selectedSubject === "all" ? "dark" : "outline-secondary"}
                             size="sm"

@@ -8,6 +8,8 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 
+import styles from "../../styles/ProfileEditForm.module.css";
+
 import { axiosReq } from "../../api/axiosDefaults";
 
 import {
@@ -97,7 +99,7 @@ const ProfileEditForm = () => {
     const textFields = (
         <>
             <Form.Group>
-                <Form.Label>Bio</Form.Label>
+                <Form.Label>Edit Bio</Form.Label>
                 <Form.Control
                 as="textarea"
                 value={bio}
@@ -115,25 +117,30 @@ const ProfileEditForm = () => {
             <Button
                 variant="dark"
                 onClick={() => history.goBack()}
+                className={styles.biobuttons}
             >
                 cancel
             </Button>
             <Button 
                 variant="dark" 
-                type="submit">
+                type="submit"
+                className={styles.biobuttons}
+            >
                 save
             </Button>
         </>
     );
 
     return(
-    <Form onSubmit={handleSubmit}>
-        <Row>
-            <Col md={5} lg={6} className="d-none d-md-block p-0 p-md-2 text-center">
-                <Container>{textFields}</Container>
-            </Col>
-        </Row>
-    </Form>
+    <div className={styles.bioform}>
+        <Form onSubmit={handleSubmit}>
+            <Row>
+                <Col>
+                    <Container>{textFields}</Container>
+                </Col>
+            </Row>
+        </Form>
+    </div>
   );
 };
 
