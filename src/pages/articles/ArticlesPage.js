@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
 import Article from "./Article";
+import Asset from "../../components/Asset";
 
 import styles from "../../styles/ArticlesPage.module.css";
 
@@ -176,7 +177,7 @@ function ArticlesPage({ message, filter = "" }) {
                     />
                     ))}
                         dataLength={articles.results.length}
-                        loader="Loading..."
+                        loader={<Asset spinner />}
                         hasMore={!!articles.next}
                         next={() => fetchMoreData(articles, setArticles)}
                     />
@@ -195,8 +196,12 @@ function ArticlesPage({ message, filter = "" }) {
                     )}
                 </>
                 ) : (
-                <Container className={styles.loading}>
-                    Loading articles...
+                <Container>
+                    <Row className={styles.loading}>
+                        <Col>
+                            {<Asset spinner />}
+                        </Col>
+                    </Row>
                 </Container>
                 )}
             </Col>

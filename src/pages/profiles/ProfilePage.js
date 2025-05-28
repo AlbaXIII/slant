@@ -4,6 +4,7 @@ import { Container, Row, Col, Nav, Tab } from 'react-bootstrap';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { axiosReq } from "../../api/axiosDefaults";
 import Article from '../articles/Article'; 
+import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
 import styles from "../../styles/ProfilePage.module.css"
@@ -95,7 +96,7 @@ function ProfilePage() {
                         />
                     ))}
                     dataLength={profileArticles.results.length}
-                    loader={<div className="text-center">Loading more art...</div>}
+                    loader={<Asset spinner />}
                     hasMore={!!profileArticles.next}
                     next={() => fetchMoreData(profileArticles, setProfileArticles)}
                 />
@@ -119,7 +120,7 @@ function ProfilePage() {
                         />
                     ))}
                     dataLength={favouriteArticles.results.length}
-                    loader={<div className="text-center">Loading more favourites...</div>}
+                    loader={<Asset spinner />}
                     hasMore={!!favouriteArticles.next}
                     next={() => fetchMoreData(favouriteArticles, setfavouriteArticles)}
                 />
@@ -136,7 +137,7 @@ function ProfilePage() {
             <Row>
                 <Col>
                     <Container className="text-center">
-                        <div>Loading profile...</div>
+                        {<Asset spinner />}
                     </Container>
                 </Col>
             </Row>

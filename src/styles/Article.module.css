@@ -1,5 +1,9 @@
 .loading {
-    font-size: 2rem;
+    display: flex;
+    width: 100%;
+    max-width: 60%;
+    margin: 0 auto;
+    justify-content: center;
 }
 
 .title {

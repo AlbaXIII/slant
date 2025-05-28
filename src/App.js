@@ -14,14 +14,10 @@ import ArticleCreateForm from "./pages/articles/ArticleCreateForm";
 import ArticleEditForm from "./pages/articles/ArticleEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage"
 import NotFound from "./components/NotFound";
-import { useCurrentAuthUser } from "./contexts/AuthUserContext";
 import "./api/axiosDefaults";
 
 
 function App() {
-
-  const currentUser = useCurrentAuthUser();
-
   return (
     <div className={styles.App}>
       <NavBar />
