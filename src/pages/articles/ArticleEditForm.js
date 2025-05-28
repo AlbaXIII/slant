@@ -154,31 +154,33 @@ function ArticleEditForm() {
                     <h2 className={styles.heading}>
                         Add to the <em>conversation.</em>
                     </h2>
-                    <Form.Group>
-                        {image ? (
-                            <>
-                                <figure>
-                                    <Image src={image} rounded />
-                                </figure>
-                                <div>
-                                    <Form.Label htmlFor="image-upload">
-                                        <i height="35" class="fa-solid fa-2xl fa-arrow-up-from-bracket"></i>
-                                    </Form.Label>
-                                </div>
-                            </>
-                        ) : (
-                            <Form.Label htmlFor="image-upload">
-                                <i height="35" class="fa-solid fa-2xl fa-arrow-up-from-bracket"></i>
-                            </Form.Label>
-                        )}
+                    <div className={styles.imageupload}>
+                      <Form.Group>
+                          {image ? (
+                              <>
+                                  <figure>
+                                      <Image src={image} rounded />
+                                  </figure>
+                                  <div>
+                                      <Form.Label htmlFor="image-upload">
+                                          <i height="35" class="fa-solid fa-2xl fa-arrow-up-from-bracket"></i>
+                                      </Form.Label>
+                                  </div>
+                              </>
+                          ) : (
+                              <Form.Label htmlFor="image-upload">
+                                  <i height="35" class="fa-solid fa-2xl fa-arrow-up-from-bracket"></i>
+                              </Form.Label>
+                          )}
 
-                        <Form.File
-                            id="image-upload"
-                            accept="image/*"
-                            onChange={handleChangeImage}
-                            ref={imageInput}
-                        />
-                    </Form.Group>
+                          <Form.File
+                              id="image-upload"
+                              accept="image/*"
+                              onChange={handleChangeImage}
+                              ref={imageInput}
+                          />
+                      </Form.Group>
+                    </div>
                     {errors?.image?.map((message, idx) => (
                         <Alert variant="warning" key={idx}>
                             {message}

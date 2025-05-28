@@ -1,3 +1,7 @@
+.commentcontainer {
+    margin-bottom: 100px;
+}
+
 .commentbody {
     margin-left: 5px;
     font-size: 1.3rem;
@@ -7,3 +11,4 @@
 .commentbody span {
     font-size: 1rem;
 }
+

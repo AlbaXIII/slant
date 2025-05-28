@@ -97,12 +97,9 @@ const Article = (props) => {
                 <ListGroup>
                     <ListGroup.Item>
                         <Link to={`/profiles/${profile_id}`}>
-                            <strong>{owner}</strong>
+                            <span><strong>{owner}</strong></span>
+                            <span>{created_on}</span>
                         </Link>
-                    </ListGroup.Item>
-
-                    <ListGroup.Item>
-                        {created_on}
                     </ListGroup.Item>
 
                     <ListGroup.Item className={styles.maininfo}>
@@ -119,7 +116,9 @@ const Article = (props) => {
                         )}
                         {link && (
                             <div className="mb-3">
-                                <span>{link}</span>
+                                <Link to={link}>
+                                    <span>{link}</span>
+                                </Link>
                             </div>
                         )}
                     </ListGroup.Item>
@@ -203,7 +202,9 @@ const Article = (props) => {
                         )}
                         {link && (
                             <div className="mb-3">
-                                <span>{link}</span>
+                                <Link to={link}>
+                                    <span>{link}</span>
+                                </Link>
                             </div>
                         )}
                     </div>

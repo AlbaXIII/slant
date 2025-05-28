@@ -70,9 +70,9 @@ function ArticlePage() {
               />
             ))
           ) : currentUser ? (
-            <span>Be the first to comment!</span>
+            <div className={styles.commentplaceholder}>Be the first to comment!</div>
           ) : (
-            <span>No comments... yet.</span>
+            <div className={styles.commentplaceholder}>No comments... yet.</div>
           )}
         </Container>
       </Col>
