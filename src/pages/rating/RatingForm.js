@@ -18,9 +18,7 @@ function RatingForm() {
   const fetchRatingsData = useCallback(async () => {
     if (!id) return;
     
-    try {
-      console.log('Fetching ratings for article ID:', id);
-      
+    try {      
       try {
         const statsResponse = await axiosReq.get(`/articles/${id}/rating-stats/`);
         setAverageRating(statsResponse.data.average_rating || 0);

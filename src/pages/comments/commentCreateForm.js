@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -9,7 +8,7 @@ import styles from "../../styles/CommentCreateEditForm.module.css";
 import { axiosRes } from "../../api/axiosDefaults";
 
 function CommentCreateForm(props) {
-  const { article, setArticle, setComments, profile_id } = props;
+  const { article, setArticle, setComments } = props;
   const [body, setBody] = useState("");
 
   const handleChange = (event) => {
