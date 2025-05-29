@@ -1,9 +1,10 @@
 import React from "react";
 
 import Container from "react-bootstrap/Container"
-import { Link } from "react-router-dom";
 
 import styles from "../styles/NotFound.module.css"
+
+import { Link } from "react-router-dom";
 
 const NotFound = () => {
     return (

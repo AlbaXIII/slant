@@ -1,5 +1,7 @@
 # /slant README
 
+![slant site logo image](src\assets\readme\slant-default-image.png)
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
@@ -24,13 +26,13 @@ Modern current affair news media is a minefield. There are so many sources and a
 
 slant does things differently.
 
-slant is a totally objective repository of journalistic articles where users can submit and share pieces – either written independently or from one of the major outlets – and comment, favourite and share their favourites. 
+slant is a totally objective repository of journalistic articles where users can submit and share pieces – either written independently or from one of the major outlets – and comment or bookmark their favourites.
 
-However, this is not all – each submission to slant is ranked by two systems, ‘legacy’ bias, and bias according to the slant users. 
+However, this is not all – each submission to slant is rated by our users and an average rating is displayed beneath each article. Users are encouraged to rate articles on critical analysis and not sensationalism, because most of all, slant is a place for stories without the "noise" of modern news outlets - no ads, no distractions, just discussion and analysis. 
 
 slant aims to break the news media wheel of doom and expand the horizons of it’s users, and provide a website where the bias of a story is voted on by the users of the website – allowing each and every user to examine journalistic prejudices and begin to examine the media from a Critical stance, with each piece of content receiving ratings based on user inputs.
 
-slant created using **React** and **Django REST framework**, and is my PP5 submission for Code Institute Advanced Front End.
+slant created mainly using **React** and **Django REST framework**, and is my PP5 submission for Code Institute Advanced Front End.
 
 ## Links
 
@@ -231,28 +233,322 @@ admin documentation
 
 ## Design
 
+The main guiding principal behind the creation of slant was one of minimalism without scarcity. I wanted to create a platform where users can gleam the maximum amount of information from a concise heading breakdown without being overwhelmed, and then access a more detailed view with a illustrative picture and the engagement components for authorised users.
+
+In terms of colours and layout, I wanted to emulate the look and feel of an vintage newspaper, with a background of a collaged newspaper cutting contrasting with the stark close-to black print providing a striking visual contrast. With the information of each article, there is a splash of colour on each one to keep the UX clean and defined.
+
 ### Wireframes
+
+Wireframes created using [Balsamiq Wireframes](https://balsamiq.com/)
+
+![slant wireframe index](src\assets\readme\readme-ux\wireframe-index.png)
+
+![slant wireframe article](src\assets\readme\readme-ux\wireframe-article.png)
+
+![slant wireframe profile](src\assets\readme\readme-ux\wireframe-profile.png)
+
+![slant wireframe mobile](src\assets\readme\readme-ux\wireframe-mobile.png)
 
 ### Color Scheme
 
+The color scheme utilised in slant was made using [Color Hex]( https://www.color-hex.com/color-palette/1047882) and is called ‘Old Money’. 
+
+![slant color scheme](src\assets\readme\readme-ux\slant-color-scheme.png)
+
+### Fonts
+
+The font for the main logo brand is called 'Special Elite' and is remeniscent of old typewriters to go along with the clasic typeface design philosophy. The main articles are a font called 'Libre Caslon' - a classic font that is clean and readable.
+
+![slant fonts](src\assets\readme\readme-ux\slant-fonts.PNG)
+
 ### ERD
+
+The main Entity Relationship Diagram (ERD) for the project was designed using the web service [DrawSQL](https://drawsql.app/).
+
+![slant ERD diagram](src\assets\readme\readme-misc\slant-erd-diagram.PNG)
 
 ### CRUD Table
 
-### API Endpoints
+![slant CRUD table](src\assets\readme\readme-misc\slant-crud-table.PNG)
 
 ## Features
 
+### NavBar
+
+The NavBar is the first and most vital component in the site, being present on every page. On the left-hand side, the site brand logo is displayed as a link to the homepage, whilst on the right, a collapsible responsive dropdown menu shows links depending on the authentication status of the user in question;
+
+IMAGE
+
+IMAGE
+
+When on smaller screens, the menu shows as a burger icon, with a custom hook that allows users to collapse the menu by clicking anywhere on the screen and not just in on the burger menu.
+
+### Authentication
+
+Using the NavBar, users can access forms that handle all stages of authentication. They can access a signup form;
+
+IMAGE
+
+A login form;
+
+IMAGE
+
+Or a logout form once logged in;
+
+IMAGE
+
+All stages of authentication have defensive programming inputs, so you are not able to enter an invalid password, or an empty input.
+
+### Article Page
+
+The main home page of the site is the landing pad for all users. In this page, each individual Article is rendered with the required amount of information, such as title, publisher, subject, and external link(if applicable).
+
+IMAGE
+
+At the top of the page, there is a search bar that renders a filtered selection of Articles depending on keyword, user or subject – and can be further filtered down by selecting one of the discreet subject buttons which will return only Articles of that subject.
+
+IMAGE
+
+IMAGE
+
+Each article has a reactive favourite component on the right, where the metrics for favourites and comments are displayed to show the amount of engagement an Article has. The favourite handle effect can be accessed through this page, and an authenticated user will be able to add an Article to their favourites by clicking on the star. Unauthorised users will be shown a tooltip informing them of their unauth status, and a different tooltip will show for users favouriting their own articles.
+
+IMAGE
+
+IMAGE
+
+Lastly in this page, article owners can see a dropdown menu for accessing the editing and deletion of their submitted articles.
+
+IMAGE
+
+### Article Creation
+
+Through the “create” link shown to authorised users at the top of the NavBar, authenticated users can access the Article Creation form. The form renders a text input for title and link, and dropdown inputs for subject and publisher. An Image input is placed at the top of the form, and will render a placeholder image if none is selected by the user.
+
+IMAGE
+
+The text body is a textarea form that has an unlimited character count for the submission of long reads.
+
+IMAGE
+
+### Article Detail
+
+This more detailed view has a larger card structure, with the display of the text body and the image (placeholder or submitted).
+
+IMAGE
+
+In this detail view, Article owners can access the same dropdown form as on the main article page, which either renders the edit form with the current information for easy changing or deletes the article from the database.
+
+IMAGE
+
+Authenticated users can also access the same favouriting function from the main Article page.
+
+### Rating Form & Comments
+
+Beneath each Article in the detailed Article view is the rating and comment forms.
+
+The rating form is 2 form ranges, rendered as a slider numbered from 1 to 10. The upper form returns an average of all rating ids associated with a particular Article, whilst the lower is an interactive form that sends a value to the database that updates the average in real time.
+
+IMAGE
+
+Unauthenticated users are unable to access the interactive form and can only see the average. Furthermore, once submitted, users can update their rating views as they see fit if they change their minds.
+
+IMAGE
+
+Underneath the rating form is the comment form. Comments are delineated by username, and date of submission which updates dynamically. Similarly to ratings, this is locked off from unauthenticated users and will either just show the comments linked to a particular Article or a message depending on the presence of any comments.
+
+IMAGE
+
+IMAGE
+
+Comment owners can access the same model of dropdown as the Article submittors, which allows them to update and edit their comments as they see fit.
+
+IMAGE
+
+ 
+### Profile
+
+Once authorised, a user can access the profile page through their username navlink displayed in the NavBar, or view other profiles by accessing the usernames of other posters through their article submissions.
+
+The profile page displays the username and small bio of the user, which a dropdown menu that allows the account owner to edit their username, bio or password.
+
+IMAGE
+
+Chiefly displayed in the profile page is a tabbed display of both the Articles submitted by the user and their favourited Articles, which can be swapped between at their leisure.
+
+IMAGE
+
+All functionality rendered in every Article (favouriting, detail view) are still available in this view as it rendering the same article element as displayed in the home page.
+
+IMAGE
+
 ## Security
+
+Each form has defensive programming utilised for empty or invalid inputs.
+
+A redirect hook is also in place to relay users attempting to access out-of-bounds URLS, sending unauthorised users back to the home page if they don’t pass the currentuser context.  
 
 ## Bugs & Known Issues
 
+### Development
+
+- Image validation in ArticleEditForm.js
+
+When implementing the ArticleEditForm, I was having an error when attempting to resubmit the edited Article back to the database;
+
+IMAGE
+
+This issue was cause by a conflict in formData resubmission, where I was passing an undefined value but still attempting to append to it. The fix was to rework the handling logic to include a conditional append to the formData only if a a new file is actually selected.
+
+- RatingForm.js
+
+The rating form component went through quite a few development cycles. The initial idea was to have the rating displayed as a ‘gauge’ instead of a range input, and I was going to use an external library from [mui](https://mui.com/x/react-charts/gauge/) or the [npm version](https://www.npmjs.com/package/react-gauge-component) but time constraints meant that I had to retire that idea progression and go for a more easily implementable range system.
+
+Once decided, I had to retrofit the slant API in order to receive the average ratings, but in it’s initial implementation I could only send the default integer returned from the initial useState declaration, which was 5.
+
+This was because both my API view and call in both ends of the stack were misaligned and sending and receiving the wrong data in my fetchRating function.
+
+###  Unfixed bugs
+
+No known unfixed bugs at time of deployment.
+
 ## Future Features
 
+- Comment Filtering & Favouriting
+
+In a future development cycle a user would be able to filter comments by the number of favourites each comment received, which would allow them to sort by the most engaging content.
+
+- Replies to comments
+
+In a similar vein, replying to comments is another feature to be implemented in a further cycle. This would allow users to create mini-threads and increase UX for conversations between users.
+
 ## Testing
+
+### Validators
+
+### Manual Testing
+
+USER STORIES
+
+| User Story      | Acceptance Criteria | Expected Outcome  | Pass/Fail 
+| ----------- | ----------- | ----------- | -----------
+| [#2 Deploy Early](https://github.com/AlbaXIII/slant/issues/2) | Deploy early to Heroku | Site deployed | PASS
+| [#3 Create NavBar](https://github.com/AlbaXIII/slant/issues/3) | Create Navbar component on all pages | Component created & visible on all pages | PASS
+| [#4 Add routing system](https://github.com/AlbaXIII/slant/issues/4) | Create routing system for navigation | System implemented & tested | PASS
+| [#5 Signup form](https://github.com/AlbaXIII/slant/issues/5) | Create signup form for new users to register accounts | Form implemented & tested with backend | PASS
+| [#6 Login/Logout form](https://github.com/AlbaXIII/slant/issues/6) | Create login/logout form for new users to register accounts | Forms implemented & tested with backend | PASS
+| [#7 Create/Submit articles](https://github.com/AlbaXIII/slant/issues/7) | User submit articles | Article form created, submissions to backend tested | PASS
+| [#9 Favourite articles](https://github.com/AlbaXIII/slant/issues/9) | User favourite articles | Favourite function created, updates to backend tested | PASS
+| [#10 Rate articles](https://github.com/AlbaXIII/slant/issues/10) | User can add rating to articles | Rating function created, updates to backend tested | PASS
+| [#11 Edit/delete articles](https://github.com/AlbaXIII/slant/issues/11) | User can edit/delete submitted articles | Edit form/deletion commands created & tested | PASS
+| [#16 Submit comments](https://github.com/AlbaXIII/slant/issues/16) | User can submit comments | Comment form added & tested | PASS
+| [#18 Edit comments](https://github.com/AlbaXIII/slant/issues/18) | User can edit submitted comments | Edit form command created & tested | PASS
+| [#19 Delete comments](https://github.com/AlbaXIII/slant/issues/19) | User can delete submitted comments | Delete command created & tested | PASS
+| [#20 Acess profile page](https://github.com/AlbaXIII/slant/issues/20) | User can access profile page with submittted/favourited articles | profile page added & tested | PASS
+
+**NAVBAR**
+
+| **Test**    | **Action** | **Expected Outcome**  | **Pass/Fail** | **Comments** |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| NavBar displays brand icon/home link, signup, and login links for first time user | Logout as an authenticated user and visit site, check all nav items and links are correct | Nav list items display correctly and links function for first time users	 | PASS
+| NavBar display differentiates between logged in and logged out users | Log in with account credentials and view navbar items for visual confirmation of user status | Signup/Login NavBar links become Account usernamename and link to logout form, with additional link to create article form | PASS
+| NavBar account name functions to take authenticated user through to profile page | Log in as a user and test username navbar link functions as link to profile | Username NavBar link take authenticated users to profile page | PASS
+| NavBar create article link functions to take authenticated user through to create article form | Log in as a user and test create navbar link functions as link to create article page | create NavBar link take authenticated users to create article form | PASS
+| NavBar brand icon functioning correctly as link to homepage for all users | Test link to homepage as authenticated and unauthenticated user | Link functions correctly to homepage base URL "/" | PASS
+| NavBar displays on all pages regardless of user status | Visit all pages as authenticated and unauthenticated user and get visual confirmation NavBar displays consistently across all pages | NavBar showing correctly on all pages | PASS
+
+**ACCOUNT**
+| **Test**    | **Action** | **Expected Outcome**  | **Pass/Fail** | **Comments** |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| First time visitor can register for account through signup form in NavBar | Access as first time user, use account register link to make account and log in | Account created successfully, NavBar visually changes to display username | PASS
+| Authenticated users can logout through provided NavBar link | As a logged in user, logout using NavBar | Link redirects to logout page, logout successful, NavBar reverts to pre-login  | PASS
+| Returning users can login through provided NavBar link | As a returning user, log in through NavBar link | Link redirects to login page, login successful, Navbar updates to show username | PASS
+| Returning users can access login page through registration form | As a logged out user, access signup form and use provided link to login page | Link redirects to login page | PASS
+
+
+**ARTICLE LIST**
+| **Test**    | **Action** | **Expected Outcome**  | **Pass/Fail** | **Comments** |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| Main article list displays infinite scroll of articles fetching more data from the backend dynamically for all users | Visit site as a new user and member, access main articl list home page | article list displayed correctly and updates with fetchdata call | PASS
+| Loading spinner displays on wait to fetch article list | refresh page to see if spinner activates | spinner visible in loading stage | PASS
+| Search bar returns filtered build list based on keyword input | Visit site in all user states, enter/delete keyword into search bar | Site filters article list dynamically with each keypress, reverting on clearing search bar | PASS 
+| Button subject filters dynamically filter articles based on selected subject button | visit site in all auth states, press each subject button | main articles page displays filtered article set depending on which button pressed (see comments) | PASS (see [known Bugs & Issues](#bugs--known-issues))
+| Auth user can favourite articles in main article view by clicking the star | visit site as auth user, click star | favourite count iterated up, visual feedback provided to user in form of colour change & article added to profile favourite tab | PASS
+| Non-auth user cannot favourite articles | visit site as unauth user, click star | favourite function disabled & notifie to user via tooltip | PASS
+| All users can access article detail view by title, comment link | visit site as all user states, attempt to access article detail by all link methods | article detail opens on all intended links | PASS
+| Article owners can access edit/delete dropdown menu & utilise both commands in article list view | submit article, check for dropdown menu & test edit/delete functions | menu appears to article owners and functions correctly | PASS
+
+**ARTICLE DETAIL**
+| **Test**    | **Action** | **Expected Outcome**  | **Pass/Fail** | **Comments** |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| Article detail shows full article information in different format to main Article | access single article id through URL or main page & check for all information displayed | detail view shows image, article body | PASS
+| Article owners can access edit/delete dropdown menu & utilise both commands in article list view | submit article, access detail view & check for dropdown menu & test edit/delete functions | menu appears to article owners and functions correctly | PASS
+| Auth user can favourite articles in article detail view by clicking the star | visit site as auth user, click star | favourite count iterated up, visual feedback provided to user in form of colour change & article added to profile favourite tab | PASS
+| All users can see average rating form in disabled state | access detail page as all user states to check rating section | all users able to view average rating | PASS
+| Auth users can add rating using second rating form | second rating form is available and interactable for auth users | auth users able to submit rating, average rating updates dynamically, users can update rating with second input | PASS
+| Auth users can leave a comment on any article including owned | Access article detail page as authorised user, owner and leave a comment through comment form | Comment form updates instantly with time of day & profile link | PASS
+| Comment owners can access edit/delete dropdown menu & utilise both commands in article list view | submit comment, access detail view & check for dropdown menu & test edit/delete functions | menu appears to article owners and functions correctly | PASS
+| Non auth users cannot access comment form | visit detail view as unauth user, attempt to access comment form | form hidden for unauth users | PASS
+
+**ADD/EDIT ARTICLE**
+| **Test**    | **Action** | **Expected Outcome**  | **Pass/Fail** | **Comments** |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| Auth users can upload articles using create form or create URL | Complete form fields as a auth user and submit using form | redirection takes user through to new article detail view instantly as visual confirmation | PASS
+| Form reacts defensively to required unfilled fields | attempt to send incomplete formdata | form reacts defensively via DOM messaging | PASS
+| Optional fields remain optional | image/link fields submit placeholders if left unfilled | default placeholder image & link text uploaded to database if unfilled | PASS
+| Edit article form loads previous data on access | submit article, access edit form and check for empty form | form retains data from previous upload | PASS
+
+**PROFILE**
+| **Test**    | **Action** | **Expected Outcome**  | **Pass/Fail** | **Comments** |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| Auth users' profile pages displays tabbed display of both submissions and favourites | Create account, submit article, favourite article, check profile page for updates | updated display shows posted/favourited article in list view as like the home page | PASS
+| Deleted/unfavourited articles are removed from profile view | submit article, check for reaction in profile page | deleted/unfavourited articles removed | PASS
+| Profile owners can change username, bio & password through dropdown form | create account, login & use dropdown to access change forms | all change forms function correctly | PASS
+
+**FOOTER**
+| **Test**    | **Action** | **Expected Outcome**  | **Pass/Fail** | **Comments** |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| Footer displays correctly on all pages for both first time users and members | Visit all pages as authenticated and unauthenticated user | Footer displays correctly on all pages | PASS
+| Github link functions correctly and opens developer profile page in new tab | Access link on all pages to test link to GitHub is operational and opens in new tab | Link opens new tab and lands on correct page on all pages | PASS
+
+**CRUD TESTS**
+
+| **CREATE** | Add Article through create form, create ratings and comments through article view, create account through signup form.
+
+| **READ** | Article list, Article detail, rating & comment pane all accessible to all users.
+
+| **UPDATE** | Article/comment/rating owners can update their submissions through dropdown on all pages.
+
+| **DELETE** | Article/comment/rating owners can delete their submissions through dropdown on all pages.
 
 ## Deployment
 
 ## Technologies Used
 
 ## Credits and Acknowledgments 
+
+### Credits
+
+- This project, as with the slant API, is heavily based on the skeleton of the ‘moments’ project from Code Institute’s DRF & React advanced front end walkthrough module.
+
+- Style and layout inspiration from [Reddit](https://reddit.com), and [Ground News](https://ground.news).
+
+- Credit as well to many repositories looked to for inspiration, for example;
+
+- [yakker](https://github.com/lee-joanne/yakker-frontend/) by [lee-joanne](github.com/lee-joanne)
+
+- [KitRate](https://github.com/TR94/kit-rate-pp5-frontend) by [TR94](https://github.com/TR94/)
+
+- [Travel Tickr](https://github.com/SandraBergstrom/travel-tickr) by [Sandra Bergstrom](https://github.com/SandraBergstrom/)
+
+- The countless StackOverflow & Reddit posts used during the development process.
+
+- Special credit to the Code Institute Slack & Tutor Support channels.
+
+### Acknowledgements
+
+- To my mentor Dick Vlaanderen, who as always was a great help.
+
+- My friend Alex, for his wisdom.
+
+- My wife Kate, for her patience!

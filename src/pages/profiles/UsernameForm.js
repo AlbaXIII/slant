@@ -16,8 +16,6 @@ import {
     useSetCurrentAuthUser,
 } from "../../contexts/AuthUserContext";
 
-import appStyles from "../../App.module.css";
-
 const UsernameForm = () => {
     const [username, setUsername] = useState("");
     const [errors, setErrors] = useState({});

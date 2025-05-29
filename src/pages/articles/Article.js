@@ -1,12 +1,18 @@
 import React from "react";
-import styles from "../../styles/Article.module.css";
-import { useCurrentAuthUser } from "../../contexts/AuthUserContext";
-import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
+
+import Card from "react-bootstrap/Card";
 import ListGroup from 'react-bootstrap/ListGroup';
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+
+import styles from "../../styles/Article.module.css";
+
 import { Link } from "react-router-dom";
-import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router";
+
+import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
+import { useCurrentAuthUser } from "../../contexts/AuthUserContext";
 
 const Article = (props) => {
     const {
@@ -53,8 +59,9 @@ const Article = (props) => {
                     return article.id === id
                         ? { ...article, favourites_count: article.favourites_count + 1, favourite_id: data.id }
                         : article;
-                }),
+                }),                
             }));
+        history.push("/");
         } catch (err) {
         console.log(err);
         }

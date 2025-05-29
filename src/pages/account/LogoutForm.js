@@ -1,15 +1,16 @@
 import React from "react";
 import axios from "axios";
 
-import { Link, useHistory } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 
 import styles from "../../styles/LogoutForm.module.css"
+
+import { Link, useHistory } from "react-router-dom";
 
 import { useSetCurrentAuthUser } from "../../contexts/AuthUserContext";
 import { removeTokenTimestamp } from "../../utils/utils";
 
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
 
 function LogoutForm(){
     
