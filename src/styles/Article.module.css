@@ -11,6 +11,11 @@
     text-decoration: underline;
     font-size: 1.8rem;
     color: #0E1C4F;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
 }
 
 .profileinfo {

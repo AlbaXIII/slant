@@ -199,7 +199,7 @@ const handleUnfavourite = async () => {
                             <div className={styles.createdon}>{created_on}</div>
                         </div>   
                         {title && (
-                            <div className="mb-2">
+                            <div className="flex-grow-1 me-3" style={{ minWidth: 0 }}>
                                 <Link to={`/articles/${id}`} className="text-decoration-none">
                                     <Card.Title className={styles.title}>{title}</Card.Title>
                                 </Link>
