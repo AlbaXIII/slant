@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Card from "react-bootstrap/Card";
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -43,16 +43,19 @@ const Article = (props) => {
 
     const handleDelete = async () => {
         try {
-        await axiosRes.delete(`/articles/${id}/`);
-        history.push("/");
+            await axiosRes.delete(`/articles/${id}/`);
+            window.location.reload();
         } catch (err) {
-        //console.log(err);
+            console.log(err);
         }
     };
 
-    const handleFavourite = async () => {
-        try {
-            const { data } = await axiosRes.post("/favourites/", { article: id });
+const handleFavourite = async () => {
+    try {
+        const { data } = await axiosRes.post("/favourites/", { article: id });
+        
+
+        if (setArticles && typeof setArticles === 'function') {
             setArticles((prevArticles) => ({
                 ...prevArticles,
                 results: prevArticles.results.map((article) => {
@@ -61,27 +64,34 @@ const Article = (props) => {
                         : article;
                 }),                
             }));
-        history.push("/");
-        } catch (err) {
-        //console.log(err);
+        } else {
+            window.location.reload();
         }
-    };
+    } catch (err) {
+        //console.log(err);
+    }
+};
 
-    const handleUnfavourite = async () => {
-        try {
-            await axiosRes.delete(`/favourites/${favourite_id}/`);
+const handleUnfavourite = async () => {
+    try {
+        await axiosRes.delete(`/favourites/${favourite_id}/`);
+
+        if (setArticles && typeof setArticles === 'function') {
             setArticles((prevArticles) => ({
                 ...prevArticles,
                 results: prevArticles.results.map((article) => {
                     return article.id === id
-                        ? { ...article, likes_count: article.likes_count - 1, favourite_id: null }
+                        ? { ...article, favourites_count: article.favourites_count - 1, favourite_id: null }
                         : article;
                 }),
             }));
-        } catch (err) {
-        //console.log(err);
+        } else {
+            window.location.reload();
         }
-    };
+    } catch (err) {
+        //console.log(err);
+    }
+};
 
     if (articlePage) {
         return (

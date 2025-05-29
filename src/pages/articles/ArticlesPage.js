@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import Article from "./Article";
 import Asset from "../../components/Asset";
@@ -12,9 +13,9 @@ import Asset from "../../components/Asset";
 import styles from "../../styles/ArticlesPage.module.css";
 
 import { useLocation } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
 
-import InfiniteScroll from "react-infinite-scroll-component";
+import { useCurrentAuthUser } from "../../contexts/AuthUserContext";
+import { axiosReq } from "../../api/axiosDefaults";
 import { fetchMoreData } from "../../utils/utils";
 
 function ArticlesPage({ message, filter = "" }) {
@@ -23,6 +24,7 @@ function ArticlesPage({ message, filter = "" }) {
     const { pathname } = useLocation();
 
     const [query, setQuery] = useState("");
+    const currentUser = useCurrentAuthUser();
     const [selectedSubject, setSelectedSubject] = useState("all");
     const [availableSubjects, setAvailableSubjects] = useState([]);
     const [allArticles, setAllArticles] = useState({ results: [] });
@@ -48,7 +50,7 @@ function ArticlesPage({ message, filter = "" }) {
             clearTimeout(timer);
         };
 
-    }, [filter, query, pathname] )
+    }, [filter, query, pathname, currentUser] )
 
      useEffect(() => {
         if (allArticles.results.length > 0) {
