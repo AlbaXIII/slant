@@ -31,12 +31,18 @@ function LogoutForm(){
 
     return (
         <div className={styles.container}>
-            <h2>Are you sure you want to logout?</h2>
             <Container>
-                <Button className={styles.button} variant="dark" onClick={handleSignout}>Yes</Button>
-                <Link to="/">
-                     <Button className={styles.button} variant="dark">No</Button>
-                </Link>
+                <h3>Are you sure you want to logout?</h3>
+                <div className={styles.buttoncontainer}>
+                    <Button className={styles.button} variant="dark" onClick={handleSignout}>
+                        Yes
+                    </Button>
+                    <Link to="/">
+                    <Button className={styles.button} variant="dark">
+                        No
+                    </Button>
+                    </Link>
+                </div>
             </Container>
         </div>
     )

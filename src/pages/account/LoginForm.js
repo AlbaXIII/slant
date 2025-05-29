@@ -94,9 +94,9 @@ function LoginForm(){
                         </Alert>
                     ))}
                 </Form>
-        <Container>
-            Need an account? <Link className={styles.link} to="/signup">Sign up here.</Link>
-        </Container>
+            <Container>
+                Need an account? <Link className={styles.link} to="/signup">Sign up here.</Link>
+            </Container>
         </div>
     )
 }

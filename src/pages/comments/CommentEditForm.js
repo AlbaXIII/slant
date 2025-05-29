@@ -3,12 +3,14 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
+import styles from "../../styles/CommentCreateEditForm.module.css"
+
 import { axiosRes } from "../../api/axiosDefaults";
 
 function CommentEditForm(props) {
-  const { id, content, setShowEditForm, setComments } = props;
+  const { id, body, setShowEditForm, setComments } = props;
 
-  const [formBody, setFormBody] = useState(content);
+  const [formBody, setFormBody] = useState(body);
 
   const handleChange = (event) => {
     setFormBody(event.target.value);
@@ -26,7 +28,7 @@ function CommentEditForm(props) {
           return comment.id === id
             ? {
                 ...comment,
-                content: formBody.trim(),
+                body: formBody.trim(),
                 updated_at: "now",
               }
             : comment;
@@ -49,17 +51,19 @@ function CommentEditForm(props) {
           cols={50}
         />
       </Form.Group>
-      <div className="text-right">
+      <div className="text-right m5">
         <Button
           variant="dark"
           onClick={() => setShowEditForm(false)}
           type="button"
+          className={styles.editbuttons}
         >
           cancel
         </Button>
         <Button
           variant="dark"
           type="submit"
+          className={styles.editbuttons}
         >
           save
         </Button>
