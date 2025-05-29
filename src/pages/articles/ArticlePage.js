@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-import CommentCreateForm from "../comments/CommentCreateForm";
+import CommentCreateForm from "src/pages/comments/CommentCreateForm.js";
 import { useCurrentAuthUser } from "../../contexts/AuthUserContext";
 
 import styles from "../../styles/ArticlePage.module.css";
