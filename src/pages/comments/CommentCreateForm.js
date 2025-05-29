@@ -64,4 +64,4 @@ function CommentCreateForm(props) {
   );
 }
 
-export default CommentCreateForm
+export default CommentCreateForm;
