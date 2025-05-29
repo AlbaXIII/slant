@@ -4,7 +4,6 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-import CommentCreateForm from "../../pages/comments/CommentCreateForm";
 import { useCurrentAuthUser } from "../../contexts/AuthUserContext";
 
 import styles from "../../styles/ArticlePage.module.css";
@@ -13,6 +12,7 @@ import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Article from "./Article"
 import Comment from "../comments/Comment";
+import CommentCreateForm from "../comments/CommentCreateForm";
 import RatingForm from "../rating/RatingForm";
 
 function ArticlePage() {
