@@ -188,76 +188,81 @@ const handleUnfavourite = async () => {
     }
 
     return (
-        <Card border="secondary" className={`${styles.cards} mb-3`}>
-            <Card.Body>
-                <div className="d-flex justify-content-between align-items-start">
-                    <div className="flex-grow-1 me-3">
-                        <div className="mb-2">
-                            <Link to={`/profiles/${profile_id}`} className={styles.owner}>
-                                <strong>{owner}</strong>
-                            </Link>
-                            <div className={styles.createdon}>{created_on}</div>
-                        </div>   
-                        {title && (
-                            <div className="flex-grow-1 me-3" style={{ minWidth: 0 }}>
-                                <Link to={`/articles/${id}`} className="text-decoration-none">
-                                    <Card.Title className={styles.title}>{title}</Card.Title>
-                                </Link>
-                            </div>
-                        )}
-                        {subject && (
-                            <div className={styles.subjectbadge}>
-                                <span className="badge bg-secondary ms-2 me-2 text-white">{subject}</span>
-                            </div>
-                        )}
-                        {publisher && (
-                            <div className="mb-2">
-                                <small className="text-muted">
-                                    Publisher: <em>{publisher}</em>
-                                </small>
-                            </div>
-                        )}
-                        {link && (
-                            <div className={styles.link}>
-                                <a href={link} target="_blank" rel="noreferrer">
-                                    <span>{link}</span>
-                                </a>
-                            </div>
-                        )}
-                    </div>
-                    <div className="d-flex flex-column align-items-end gap-2">
-                        <div className="d-flex align-items-center gap-1">
-                            {is_owner ? (
-                                <OverlayTrigger
-                                    placement="top"
-                                    overlay={<Tooltip>You cannot favourite your own submissions.</Tooltip>}
-                                >
-                                    <i className="fa-regular fa-star text-muted"></i>
-                                </OverlayTrigger>
-                            ) : favourite_id ? (
-                                <span onClick={handleUnfavourite} style={{ cursor: 'pointer' }}>
-                                    <i className="fa-solid fa-star text-warning"></i>
-                                </span>
-                            ) : currentUser ? (
-                                <span onClick={handleFavourite} style={{ cursor: 'pointer' }}>
-                                    <i className="fa-regular fa-star"></i>
-                                </span>
-                            ) : (
-                                <OverlayTrigger
-                                    placement="top"
-                                    overlay={<Tooltip>Log in to favourite posts!</Tooltip>}
-                                >
-                                    <i className="fa-regular fa-star text-muted"></i>
-                                </OverlayTrigger>
-                            )}
-                            <span className="fw-bold">{favourites_count}</span>
-                        </div>
-                        <div className="d-flex align-items-center gap-1">
+    <Card border="secondary mb-3">
+        <Card.Body>
+            <div className={`flex-md-row ${styles.cardlistcontainer}`}>
+                <div className={`flex-grow-1 ${styles.cardcontent}`} style={{ minWidth: 0 }}>
+                    <div className="mb-2">
+                        <Link to={`/profiles/${profile_id}`} className={styles.owner}>
+                            <strong>{owner}</strong>
+                        </Link>
+                        <div className={styles.createdon}>{created_on}</div>
+                    </div>   
+                    
+                    {title && (
+                        <div className="mb-2" style={{ minWidth: 0 }}>
                             <Link to={`/articles/${id}`} className="text-decoration-none">
-                                <i className="fa-solid fa-comments"></i>
+                                <Card.Title className={styles.title}>{title}</Card.Title>
                             </Link>
-                            <span className="fw-bold">{comments_count}</span>
                         </div>
+                    )}
+                    
+                    {subject && (
+                        <div className={`${styles.subjectbadge} mb-2`}>
+                            <span className="badge bg-secondary ms-2 me-2 text-white">{subject}</span>
+                        </div>
+                    )}
+                    
+                    {publisher && (
+                        <div className="mb-2">
+                            <small className="text-muted">
+                                Publisher: <em>{publisher}</em>
+                            </small>
+                        </div>
+                    )}
+                    
+                    {link && (
+                        <div className={`${styles.link} mb-2`} style={{ minWidth: 0 }}>
+                            <a href={link} target="_blank" rel="noreferrer">
+                                <span>{link}</span>
+                            </a>
+                        </div>
+                    )}
+                </div>
+                <div className={`${styles.engagementlistcontainer} flex-md-column align-items-md-end mt-md-0 ms-md-3`}>
+                    <div className="d-flex align-items-center gap-1">
+                        {is_owner ? (
+                            <OverlayTrigger
+                                placement="top"
+                                overlay={<Tooltip>You cannot favourite your own submissions.</Tooltip>}
+                            >
+                                <i className="fa-regular fa-star text-muted"></i>
+                            </OverlayTrigger>
+                        ) : favourite_id ? (
+                            <span onClick={handleUnfavourite} style={{ cursor: 'pointer' }}>
+                                <i className="fa-solid fa-star text-warning"></i>
+                            </span>
+                        ) : currentUser ? (
+                            <span onClick={handleFavourite} style={{ cursor: 'pointer' }}>
+                                <i className="fa-regular fa-star"></i>
+                            </span>
+                        ) : (
+                            <OverlayTrigger
+                                placement="top"
+                                overlay={<Tooltip>Log in to favourite posts!</Tooltip>}
+                            >
+                                <i className="fa-regular fa-star text-muted"></i>
+                            </OverlayTrigger>
+                        )}
+                        <span className="fw-bold">{favourites_count}</span>
+                    </div>
+                    
+                    <div className="d-flex align-items-center gap-1">
+                        <Link to={`/articles/${id}`} className="text-decoration-none">
+                            <i className="fa-solid fa-comments"></i>
+                        </Link>
+                        <span className="fw-bold">{comments_count}</span>
+                    </div>
                         {is_owner && (
                             <MoreDropdown
                                 handleEdit={handleEdit}

@@ -95,25 +95,47 @@ function ArticleEditForm() {
       <Container>
         <Form.Group>
           <Form.Label className="d-none">Publisher</Form.Label>
-          <Form.Control
-            type="text"
-            name="publisher"
-            value={publisher}
-            onChange={handleChange}
-            placeholder="Publisher*"
-            required
-          />
+            <Form.Control
+              as="select"
+              name="publisher"
+              value={publisher}
+              onChange={handleChange}
+              placeholder="Publisher*"
+              aria-label="publisher"
+              required
+            >
+              <option value="original content">Original Content</option>
+              <option value="the guardian">The Guardian</option>
+              <option value="daily mai">Daily Mail</option>
+              <option value="the independant">The Independant</option>
+              <option value="daily telegraph">Daily Telegraph</option>
+              <option value="daily express">Daily Express</option>
+              <option value="the sun">The Sun</option>
+              <option value="financial times">Financial Times</option>
+              <option value="metro">Metro</option> 
+              <option value="the times">The Times</option> 
+              <option value="other">Other</option> 
+            </Form.Control>
         </Form.Group> 
         <Form.Group>
           <Form.Label className="d-none">Subject</Form.Label>
-          <Form.Control
-            type="text"
-            name="subject"
-            value={subject}
-            onChange={handleChange}
-            placeholder="Subject*"
-            required
-          />
+            <Form.Control
+              as="select"
+              name="subject"
+              value={subject}
+              onChange={handleChange}
+              aria-label="subject"
+              required
+            >
+              <option value="news">News</option>
+              <option value="sport">Sport</option>
+              <option value="culture">Culture</option>
+              <option value="opinion">Opinion</option>
+              <option value="lifestyle">Lifestyle</option>
+              <option value="reviews">Reviews</option>
+              <option value="travel">Travel</option>
+              <option value="other">Other</option>
+            </Form.Control>
         </Form.Group>  
         <Form.Group>
           <Form.Label className="d-none">Title</Form.Label>

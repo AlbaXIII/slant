@@ -125,7 +125,6 @@ function ArticleCreateForm() {
                 <option value="travel">Travel</option>
                 <option value="other">Other</option>
               </Form.Control>
-              
             </Form.Group>
             <Form.Group>
               <Form.Label className="d-none">Title</Form.Label>

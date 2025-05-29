@@ -19,13 +19,6 @@
     margin:0 auto;
 }
 
-.cards {
-    margin-bottom: 10px;
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-}
-
 .search {
     display: flex;
     justify-content: center;
