@@ -50,7 +50,7 @@ const ProfileEditForm = () => {
                     }
                 } catch (err) {
                     if (err.name !== 'AbortError' && isMounted) {
-                        console.log(err);
+                        //console.log(err);
                         history.push("/");
                     }
                 }
@@ -81,8 +81,6 @@ const ProfileEditForm = () => {
         
         const formData = new FormData();
         formData.append("bio", bio);
-        
-        console.log("Submitting form data:", { bio }); 
         
         try {
             const { data } = await axiosReq.put(`/profiles/${id}/`, formData);

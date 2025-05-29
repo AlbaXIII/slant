@@ -4,7 +4,6 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 
-import styles from "../../styles/CommentCreateEditForm.module.css";
 import { axiosRes } from "../../api/axiosDefaults";
 
 function CommentCreateForm(props) {
@@ -36,7 +35,7 @@ function CommentCreateForm(props) {
       }));
       setBody("");
     } catch (err) {
-      console.log(err);
+      //console.log(err);
     }
   };
 

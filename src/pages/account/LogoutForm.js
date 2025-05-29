@@ -25,7 +25,7 @@ function LogoutForm(){
             removeTokenTimestamp();
             history.push("/");
             } catch (err) {
-            console.log(err);
+            //console.log(err);
             }
         };
 

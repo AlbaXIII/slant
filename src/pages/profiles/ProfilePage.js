@@ -28,7 +28,7 @@ function ProfilePage() {
             });
             return response.data;
         } catch (err) {
-        console.log(err);
+        //console.log(err);
         }
     };
 
@@ -41,7 +41,7 @@ function ProfilePage() {
             });
             return response.data;
         } catch (err) {
-        console.log(err);
+        //console.log(err);
         }
     };
 
@@ -50,7 +50,7 @@ function ProfilePage() {
             const response = await axiosReq.get(`/profiles/${userId}/`);
             return response.data;
         } catch (err) {
-        console.log(err);
+        //console.log(err);
         }
     };
 
@@ -73,7 +73,7 @@ function ProfilePage() {
                 
                 setHasLoaded(true);
             } catch (err) {
-                console.log(err);
+                //console.log(err);
                 setError('Failed to load profile data');
                 setHasLoaded(true);
             }

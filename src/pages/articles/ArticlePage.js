@@ -30,10 +30,9 @@ function ArticlePage() {
           axiosReq.get(`/comments/?article=${id}`),
         ]);
         setArticle({ results: [article] });
-        console.log(article);
         setComments(comments);
       } catch (err) {
-        console.log(err);
+        //console.log(err);
       }
     };
 

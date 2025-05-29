@@ -42,7 +42,7 @@ function ArticleEditForm() {
 
         is_owner ? setArticleData({ publisher, subject, title, link, body, image }) : history.push("/");
       } catch (err) {
-        console.log(err);
+        //console.log(err);
       }
     };
     
@@ -84,7 +84,7 @@ function ArticleEditForm() {
       await axiosReq.put(`/articles/${id}/`, formData);
       history.push(`/articles/${id}`);
     } catch (err) {
-      console.log(err);
+      //console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

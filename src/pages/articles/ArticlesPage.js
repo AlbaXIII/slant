@@ -34,7 +34,7 @@ function ArticlesPage({ message, filter = "" }) {
                 setAllArticles(data);
                 setHasLoaded(true);
             } catch (err) {
-                console.log(err);
+                //console.log(err);
             }
         };
 
