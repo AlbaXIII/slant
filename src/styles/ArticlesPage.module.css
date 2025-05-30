@@ -12,6 +12,11 @@
     padding: 4px;
 }
 
+.subjectpane Button {
+    font-size: 1.3rem;
+    margin:5px
+}
+
 .loading {
     display: flex;
     width: 15%;

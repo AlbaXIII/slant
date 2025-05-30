@@ -169,11 +169,9 @@ const handleUnfavourite = async () => {
                                     <i className="fa-regular fa-xl fa-star"></i>
                                 </OverlayTrigger>
                             )}
-                            <span className="fw-bold">{favourites_count}</span>
                             <Link to={`/articles/${id}`} className="text-decoration-none">
                                 <i className="fa-solid fa-comments"></i>
                             </Link>
-                            <span className="fw-bold mr-4">{comments_count}</span>
                             {is_owner && (
                             <MoreDropdown
                                 handleEdit={handleEdit}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
@@ -9,11 +10,14 @@ import { axiosRes } from "../../api/axiosDefaults";
 
 function CommentEditForm(props) {
   const { id, body, setShowEditForm, setComments } = props;
-
   const [formBody, setFormBody] = useState(body);
+  const [message, setMessage] = useState({ text: "", variant: "" });
 
   const handleChange = (event) => {
     setFormBody(event.target.value);
+    if (message.text) {
+      setMessage({ text: "", variant: "" });
+    }
   };
 
   const handleSubmit = async (event) => {
@@ -34,14 +38,24 @@ function CommentEditForm(props) {
             : comment;
         }),
       }));
-      setShowEditForm(false);
+      setMessage({ text: "Comment updated successfully!", variant: "dark" });
+
+      setTimeout(() => {
+        setShowEditForm(false);
+      }, 3000);
     } catch (err) {
+      setMessage({ text: "Failed to update comment. Please try again.", variant: "danger" });
       //console.log(err);
     }
   };
 
   return (
     <Form onSubmit={handleSubmit}>
+      {message.text && (
+        <Alert variant={message.variant} className="mb-3">
+          {message.text}
+        </Alert>
+      )}
       <Form.Group className="pr-1">
         <Form.Control
           as="textarea"

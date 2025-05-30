@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 
-import styles from "../../styles/PasswordForm.module.css"
+import styles from "../../styles/UserPasswordForm.module.css"
 
 import { useHistory, useParams } from "react-router-dom";
 
