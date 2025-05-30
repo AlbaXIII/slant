@@ -30,7 +30,7 @@ slant is a totally objective repository of journalistic articles where users can
 
 However, this is not all – each submission to slant is rated by our users and an average rating is displayed beneath each article. Users are encouraged to rate articles on critical analysis and not sensationalism, because most of all, slant is a place for stories without the "noise" of modern news outlets - no ads, no distractions, just discussion and analysis. 
 
-slant aims to break the news media wheel of doom and expand the horizons of it’s users, and provide a website where the bias of a story is voted on by the users of the website – allowing each and every user to examine journalistic prejudices and begin to examine the media from a Critical stance, with each piece of content receiving ratings based on user inputs.
+slant aims to break the news media wheel of doom and expand the horizons of it’s users, and provide a website where the substance of a story is voted on by the users of the website – allowing each and every user to examine journalistic prejudices and begin to examine the media from a critical stance, with each piece of content receiving ratings based on user inputs.
 
 slant created mainly using **React** and **Django REST framework**, and is my PP5 submission for Code Institute Advanced Front End.
 
@@ -52,7 +52,7 @@ slant is a journalistic archive containing independent and legacy media articles
 * To provide **all site users & visitors** a database of submitted news and current affairs articles that any user of the site can examine for free.
 * To provide **all site users & visitors** the ability to filter and sort the articles by user-designated criteria, for example subject and keyword.
 * To provide **site members** the functionality to comment, favourite and rank articles based on a  back-end defined scale.
-* To provide **site members** the ability to create a profile and choose a user ‘flair’. Users can then access a profile page with their saved & submitted articles.
+* To provide **site members** the ability to create a profile. Users can then access a profile page with their saved & submitted articles.
 
 ### Ideal User
 
@@ -218,7 +218,7 @@ admin documentation
 - As a site member I would like to be able to see authentication status on all pages.
 - As a site member I would like to be able to submit my own articles from all pages using the built-in submission form once logged in.
 - As a site member I would like to be able to edit or delete my submitted articles.
-- As a site member I would like to able to like, add comments, and submit bias rating to other articles. 
+- As a site member I would like to able to like, add comments, and submit a rating to other articles. 
 - As a site member I would like to be able to view a profile page with my submitted and favourited pages.
 
 ### Administrator Goals
@@ -229,7 +229,7 @@ admin documentation
 
 ## Design
 
-The main guiding principal behind the creation of slant was one of minimalism without scarcity. I wanted to create a platform where users can gleam the maximum amount of information from a concise heading breakdown without being overwhelmed, and then access a more detailed view with a illustrative picture and the engagement components for authorised users. It wasn't designed with the modernity of a current content site, the idea is for the text & discussion to take center stage.
+The main guiding principal behind the creation of slant was one of minimalism without scarcity. I wanted to create a platform where users can gleam the maximum amount of information from a concise heading breakdown without being overwhelmed, and then access a more detailed view with a illustrative picture and the engagement components for authorised users. It wasn't designed with the modernity of a current content site, the idea is for the text & discussion to take center stage - kind of like a current journalistic JSTOR.
 
 In terms of colours and layout, I wanted to emulate the look and feel of an vintage newspaper, with a background of a collaged newspaper cutting contrasting with the stark close-to black print providing a striking visual contrast. With the information of each article, there is a splash of colour on each one to keep the UX clean and defined.
 
@@ -634,7 +634,7 @@ To clone this repository;
 6. Navigate to the **deployed API**.
 7. Add the Heroku URL as a CLIENT_ORIGIN config var.
 8. Install & configure ngrok.
-9. Add ngrok URL as CLIENT_ORIGIN_DEV.
+9. Add ngrok URL as CLIENT_ORIGIN_DEV config var.
 10. **redploy the API**.
 11. Open frontend application.
 12. Redeploy frontend.
@@ -660,6 +660,7 @@ To clone this repository;
 - Balsamiq Wireframes
 - Font Awesome
 - Google Fonts
+- ngrok(API gateway)
 - Heroku
 
 ## Credits and Acknowledgments 
