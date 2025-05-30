@@ -8,11 +8,11 @@ import Tab from "react-bootstrap/Tab";
 
 import styles from "../../styles/ProfilePage.module.css"
 
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { axiosReq } from "../../api/axiosDefaults";
-import Article from '../articles/Article'; 
+import Article from "../articles/Article"; 
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";

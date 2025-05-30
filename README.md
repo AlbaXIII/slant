@@ -213,21 +213,15 @@ admin documentation
 ###  Site Member Goals
 
 - As a site member I can access the login/logout functionality on all pages.
-
 - As a site member I would like to be able to see authentication status on all pages.
-
 - As a site member I would like to be able to submit my own articles from all pages using the built-in submission form once logged in.
-
 - As a site member I would like to be able to edit or delete my submitted articles.
-
 - As a site member I would like to able to like, add comments, and submit bias rating to other articles. 
-
 - As a site member I would like to be able to view a profile page with my submitted and favourited pages.
 
 ### Administrator Goals
 
 - As a site administrator I can use full CRUD operations on all articles on the database.
-
 - As a site administrator I can add or delete profiles.
 
 
@@ -272,6 +266,8 @@ The main Entity Relationship Diagram (ERD) for the project was designed using th
 ![slant CRUD table](src/assets/readme/readme-misc/slant-crud-table.PNG)
 
 ## Features
+
+The development cycle for slant was primarily dictated by time, so the mantra followed was one of form over finesse - make sure the features were operable before spending time on the styles. Due to the design philosophy of slant not really relying on an overabundance of CSS it wasn't too much of a time limiter but the commits messages can show - this was a project with very specific goals in mind per development day.
 
 ### NavBar
 
@@ -615,6 +611,7 @@ To clone this repository;
 
 ### Credits
 
+- **All images used in this project are used under [fair use](https://www.gov.uk/guidance/exceptions-to-copyright)**.
 - This project, as with the slant API, is heavily based on the skeleton of the ‘moments’ project from Code Institute’s DRF & React advanced front end walkthrough module.
 - Style and layout inspiration from [Reddit](https://reddit.com) and [Ground News](https://ground.news).
 - Credit as well to many repositories looked to for inspiration, for example;

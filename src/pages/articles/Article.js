@@ -46,7 +46,7 @@ const Article = (props) => {
             await axiosRes.delete(`/articles/${id}/`);
             window.location.reload();
         } catch (err) {
-            console.log(err);
+            //console.log(err);
         }
     };
 
