@@ -1,6 +1,6 @@
 # /slant README
 
-![slant site logo image](src\assets\slant-default-image_thumbnail.png)
+![slant site logo image](src/assets/slant-default-image_thumbnail.png)
 
 ## Table of Contents
 
@@ -241,35 +241,35 @@ In terms of colours and layout, I wanted to emulate the look and feel of an vint
 
 Wireframes created using [Balsamiq Wireframes](https://balsamiq.com/)
 
-![slant wireframe index](src\assets\readme\readme-ux\wireframe-index.png)
+![slant wireframe index](src/assets/readme/readme-ux/wireframe-index.png)
 
-![slant wireframe article](src\assets\readme\readme-ux\wireframe-article.png)
+![slant wireframe article](src/assets/readme/readme-ux/wireframe-article.png)
 
-![slant wireframe profile](src\assets\readme\readme-ux\wireframe-profile.png)
+![slant wireframe profile](src/assets/readme/readme-ux/wireframe-profile.png)
 
-![slant wireframe mobile](src\assets\readme\readme-ux\wireframe-mobile.png)
+![slant wireframe mobile](src/assets/readme/readme-ux/wireframe-mobile.png)
 
 ### Color Scheme
 
 The color scheme utilised in slant was made using [Color Hex]( https://www.color-hex.com/color-palette/1047882) and is called ‘Old Money’. 
 
-![slant color scheme](src\assets\readme\readme-ux\slant-color-scheme.png)
+![slant color scheme](src/assets/readme/readme-ux/slant-color-scheme.png)
 
 ### Fonts
 
 The font for the main logo brand is called 'Special Elite' and is remeniscent of old typewriters to go along with the clasic typeface design philosophy. The main articles are a font called 'Libre Caslon' - a classic font that is clean and readable.
 
-![slant fonts](src\assets\readme\readme-ux\slant-fonts.PNG)
+![slant fonts](src/assets/readme/readme-ux/slant-fonts.PNG)
 
 ### ERD
 
 The main Entity Relationship Diagram (ERD) for the project was designed using the web service [DrawSQL](https://drawsql.app/).
 
-![slant ERD diagram](src\assets\readme\readme-misc\slant-erd-diagram.PNG)
+![slant ERD diagram](src/assets/readme/readme-misc/slant-erd-diagram.PNG)
 
 ### CRUD Table
 
-![slant CRUD table](src\assets\readme\readme-misc\slant-crud-table.PNG)
+![slant CRUD table](src/assets/readme/readme-misc/slant-crud-table.PNG)
 
 ## Features
 
@@ -277,9 +277,9 @@ The main Entity Relationship Diagram (ERD) for the project was designed using th
 
 The NavBar is the first and most vital component in the site, being present on every page. On the left-hand side, the site brand logo is displayed as a link to the homepage, whilst on the right, a collapsible responsive dropdown menu shows links depending on the authentication status of the user in question;
 
-![NavBar auth links](src\assets\readme\readme-screenshots\navbar-auth-links.PNG)
+![NavBar auth links](src/assets/readme/readme-screenshots/navbar-auth-links.PNG)
 
-![NavBar unauth links](src\assets\readme\readme-screenshots\navbar-unauth-links.PNG)
+![NavBar unauth links](src/assets/readme/readme-screenshots/navbar-unauth-links.PNG)
 
 When on smaller screens, the menu shows as a burger icon, with a custom hook that allows users to collapse the menu by clicking anywhere on the screen and not just in on the burger menu.
 
@@ -287,15 +287,15 @@ When on smaller screens, the menu shows as a burger icon, with a custom hook tha
 
 Using the NavBar, users can access forms that handle all stages of authentication. They can access a signup form;
 
-![slant signup form](src\assets\readme\readme-screenshots\signup-form.PNG)
+![slant signup form](src/assets/readme/readme-screenshots/signup-form.PNG)
 
 A login form;
 
-![slant login form](src\assets\readme\readme-screenshots\login-form.PNG)
+![slant login form](src/assets/readme/readme-screenshots/login-form.PNG)
 
 Or a logout form once logged in;
 
-![slant logout form](src\assets\readme\readme-screenshots\logout-form.PNG)
+![slant logout form](src/assets/readme/readme-screenshots/logout-form.PNG)
 
 All stages of authentication have defensive programming inputs, so you are not able to enter an invalid password, or an empty input.
 
@@ -303,32 +303,32 @@ All stages of authentication have defensive programming inputs, so you are not a
 
 The main home page of the site is the landing pad for all users. In this page, each individual Article is rendered with the required amount of information, such as title, publisher, subject, and external link(if applicable).
 
-[slant main article display](src\assets\readme\readme-screenshots\main-article-display.PNG)
+[slant main article display](src/assets/readme/readme-screenshots/main-article-display.PNG)
 
 At the top of the page, there is a search bar that renders a filtered selection of Articles depending on keyword, user or subject – and can be further filtered down by selecting one of the discreet subject buttons which will return only Articles of that subject.
 
-![slant serachbar](src\assets\readme\readme-screenshots\searchbar.PNG)
+![slant serachbar](src/assets/readme/readme-screenshots/searchbar.PNG)
 
-![slant subject buttons](src\assets\readme\readme-screenshots\subject-buttons.PNG)
+![slant subject buttons](src/assets/readme/readme-screenshots/subject-buttons.PNG)
 
 
 Each article has a reactive favourite component on the right, where the metrics for favourites and comments are displayed to show the amount of engagement an Article has. The favourite handle effect can be accessed through this page, and an authenticated user will be able to add an Article to their favourites by clicking on the star. Unauthorised users will be shown a tooltip informing them of their unauth status, and a different tooltip will show for users favouriting their own articles.
 
-![slant article closeup](src\assets\readme\readme-screenshots\article-articlespage-format.PNG)
+![slant article closeup](src/assets/readme/readme-screenshots/article-articlespage-format.PNG)
 
-![slant favourite before](src\assets\readme\readme-screenshots\favourite-tooltip.PNG)
+![slant favourite before](src/assets/readme/readme-screenshots/favourite-tooltip.PNG)
 
-![slant favourite after](src\assets\readme\readme-screenshots\favourite-after.PNG)
+![slant favourite after](src/assets/readme/readme-screenshots/favourite-after.PNG)
 
 Lastly in this page, article owners can see a dropdown menu for accessing the editing and deletion of their submitted articles.
 
-![article-dropdown](src\assets\readme\readme-screenshots\article-dropdown.PNG)
+![article-dropdown](src/assets/readme/readme-screenshots/article-dropdown.PNG)
 
 ### Article Creation
 
 Through the “create” link shown to authorised users at the top of the NavBar, authenticated users can access the Article Creation form. The form renders a text input for title and link, and dropdown inputs for subject and publisher. An Image input is placed at the top of the form, and will render a placeholder image if none is selected by the user.
 
-![create-article-form](src\assets\readme\readme-screenshots\create-article-form.PNG)
+![create-article-form](src/assets/readme/readme-screenshots/create-article-form.PNG)
 
 The text body is a textarea form that has an unlimited character count for the submission of long reads.
 
@@ -336,7 +336,7 @@ The text body is a textarea form that has an unlimited character count for the s
 
 This more detailed view has a larger card structure, with the display of the text body and the image (placeholder or submitted).
 
-![article-detail-view](src\assets\readme\readme-screenshots\article-detail-view.PNG)
+![article-detail-view](src/assets/readme/readme-screenshots/article-detail-view.PNG)
 
 In this detail view, Article owners can access the same dropdown form as on the main article page, which either renders the edit form with the current information for easy changing or deletes the article from the database.
 
@@ -348,21 +348,21 @@ Beneath each Article in the detailed Article view is the rating and comment form
 
 The rating form is 2 form ranges, rendered as a slider numbered from 1 to 10. The upper form returns an average of all rating ids associated with a particular Article, whilst the lower is an interactive form that sends a value to the database that updates the average in real time.
 
-![slant rating form](src\assets\readme\readme-screenshots\rating-form.PNG)
+![slant rating form](src/assets/readme/readme-screenshots/rating-form.PNG)
 
 Unauthenticated users are unable to access the interactive form and can only see the average. Furthermore, once submitted, users can update their rating views as they see fit if they change their minds.
 
-![slant rating form unauth](src\assets\readme\readme-screenshots\rating-comment-unauth.PNG)
+![slant rating form unauth](src/assets/readme/readme-screenshots/rating-comment-unauth.PNG)
 
 Underneath the rating form is the comment form. Comments are delineated by username, and date of submission which updates dynamically. Similarly to ratings, this is locked off from unauthenticated users and will either just show the comments linked to a particular Article or a message depending on the presence of any comments.
 
-![slant comment form empty](src\assets\readme\readme-screenshots\comment-form-empty.PNG)
+![slant comment form empty](src/assets/readme/readme-screenshots/comment-form-empty.PNG)
 
-![slant comment form](src\assets\readme\readme-screenshots\comment-dropdown.PNG)
+![slant comment form](src/assets/readme/readme-screenshots/comment-dropdown.PNG)
 
 Comment owners can access the same model of dropdown as the Article submittors, which allows them to update and edit their comments as they see fit.
 
-![slant comment dropdown](src\assets\readme\readme-screenshots\comment-dropdown.PNG)
+![slant comment dropdown](src/assets/readme/readme-screenshots/comment-dropdown.PNG)
 
 ### Profile
 
@@ -370,13 +370,13 @@ Once authorised, a user can access the profile page through their username navli
 
 The profile page displays the username and small bio of the user, which a dropdown menu that allows the account owner to edit their username, bio or password.
 
-![slant profile header](src\assets\readme\readme-screenshots\profile-header.PNG)
+![slant profile header](src/assets/readme/readme-screenshots/profile-header.PNG)
 
-![slant profile dropdown](src\assets\readme\readme-screenshots\profile-dropdown.PNG)
+![slant profile dropdown](src/assets/readme/readme-screenshots/profile-dropdown.PNG)
 
 Chiefly displayed in the profile page is a tabbed display of both the Articles submitted by the user and their favourited Articles, which can be swapped between at their leisure.
 
-![slant profile tabs](src\assets\readme\readme-screenshots\profile-tabs.PNG)
+![slant profile tabs](src/assets/readme/readme-screenshots/profile-tabs.PNG)
 
 All functionality rendered in every Article (favouriting, detail view) are still available in this view as it rendering the same article element as displayed in the home page.
 
@@ -395,11 +395,11 @@ A redirect hook is also in place to relay users attempting to access out-of-boun
 
 When implementing the ArticleEditForm, I was having an error when attempting to resubmit the edited Article back to the database;
 
-![image error message](src\assets\readme\readme-screenshots\image-error.PNG)
+![image error message](src/assets/readme/readme-screenshots/image-error.PNG)
 
 This issue was cause by a conflict in formData resubmission, where I was passing an undefined value but still attempting to append to it by duplicating the formData. The fix was to rework the handling logic to include a conditional append to the formData only if a a new file is actually selected.
 
-![image error code](src\assets\readme\readme-screenshots\image-error-code.PNG)
+![image error code](src/assets/readme/readme-screenshots/image-error-code.PNG)
 
 - RatingForm.js
 
@@ -441,21 +441,21 @@ Users could be able to view all of their posted comments collated in a similar v
 
 All custom JavaScript files passed through [eslint](https://eslint.org/) with no issues.
 
-![slant eslint components](src\assets\readme\readme-testing\eslint-components.PNG)
+![slant eslint components](src/assets/readme/readme-testing/eslint-components.PNG)
 
-![slant eslint contexts](src\assets\readme\readme-testing\eslint-contexts.PNG)
+![slant eslint contexts](src/assets/readme/readme-testing/eslint-contexts.PNG)
 
-![slant eslint hooks](src\assets\readme\readme-testing\eslint-hooks.PNG)
+![slant eslint hooks](src/assets/readme/readme-testing/eslint-hooks.PNG)
 
-![slant eslint pages](src\assets\readme\readme-testing\eslint-pages.PNG)
+![slant eslint pages](src/assets/readme/readme-testing/eslint-pages.PNG)
 
-![slant eslint app](src\assets\readme\readme-testing\eslint-app.PNG)
+![slant eslint app](src/assets/readme/readme-testing/eslint-app.PNG)
 
 **W3C CSS**
 
 All CSS utilised by slant passes through [Jigsaw W3C CSS validator](https://jigsaw.w3.org/css-validator/validator) with no issues.
 
-![slant CSS validation](src\assets\readme\readme-testing\css-url.PNG)
+![slant CSS validation](src/assets/readme/readme-testing/css-url.PNG)
 
 ### Manual Testing
 
