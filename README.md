@@ -360,6 +360,8 @@ Underneath the rating form is the comment form. Comments are delineated by usern
 
 ![slant comment form](src/assets/readme/readme-screenshots/comment-dropdown.PNG)
 
+![slant comment display](src/assets/readme/readme-screenshots/comment-form-display.PNG)
+
 Comment owners can access the same model of dropdown as the Article submittors, which allows them to update and edit their comments as they see fit.
 
 ![slant comment dropdown](src/assets/readme/readme-screenshots/comment-dropdown.PNG)

@@ -1,9 +1,13 @@
 import React, { useState, useCallback, useEffect } from "react";
+
 import Button from "react-bootstrap/Button";
+
+import styles from "../../styles/RatingForm.module.css";
+
 import { useParams } from "react-router";
+
 import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 import { useCurrentAuthUser } from "../../contexts/AuthUserContext";
-import styles from "../../styles/RatingForm.module.css";
 
 function RatingForm() {
   const { id } = useParams();

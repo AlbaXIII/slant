@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
-import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+
+import styles from "../../styles/CommentCreateEditForm.module.css"
 
 import { axiosRes } from "../../api/axiosDefaults";
 

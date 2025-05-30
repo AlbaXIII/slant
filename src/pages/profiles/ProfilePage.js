@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react';
+
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Row from "react-bootstrap/Row";
+import Tab from "react-bootstrap/Tab";
+
+import styles from "../../styles/ProfilePage.module.css"
+
 import { useParams } from 'react-router-dom';
-import { Container, Row, Col, Nav, Tab } from 'react-bootstrap';
 import InfiniteScroll from 'react-infinite-scroll-component';
+
 import { axiosReq } from "../../api/axiosDefaults";
 import Article from '../articles/Article'; 
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
-import styles from "../../styles/ProfilePage.module.css"
 
 function ProfilePage() {
     const [hasLoaded, setHasLoaded] = useState(false);

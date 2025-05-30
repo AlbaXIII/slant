@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
-import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
 
 import styles from "../../styles/ProfileEditForm.module.css";
 
 import { axiosReq } from "../../api/axiosDefaults";
-
 import {
     useCurrentAuthUser,
     useSetCurrentAuthUser,
 } from "../../contexts/AuthUserContext";
-
 
 const ProfileEditForm = () => {
 

@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 
 import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 import { useCurrentAuthUser } from "../../contexts/AuthUserContext";
 
 import styles from "../../styles/ArticlePage.module.css";
 
 import { useParams } from "react-router";
+
 import { axiosReq } from "../../api/axiosDefaults";
 import Article from "./Article"
 import Comment from "../comments/Comment";
