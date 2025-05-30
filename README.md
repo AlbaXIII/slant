@@ -16,7 +16,7 @@
 10. [Testing](#testing)
 11. [Deployment](#deployment)
 12. [Technologies Used](#technologies-used)
-13. [Credits and Acknowledgements](#credit--acknowledgements)
+13. [Credits and Acknowledgements](#credit-and-acknowledgements)
 
 ## Introduction
 
@@ -45,7 +45,7 @@ slant created mainly using **React** and **Django REST framework**, and is my PP
 
 ### Strategy 
 
-slant is a journalistic archive containing independent and legacy media articles that can be access by subscribed users. Logged in users can then browse the library of pieces, filter by sector & title keyword, like, share and favourite at their leisure, and most importantly vote on bias – the score of which is displayed at the tope of each article. 
+slant is a journalistic archive containing independent and legacy media articles that can be access by subscribed users. Logged in users can then browse the library of pieces, filter by subject & title keyword, like and favourite at their leisure, and most importantly vote on the article – the score of which is displayed at the top of each article. 
 
 ### Site Goals
 
@@ -62,7 +62,8 @@ The ideal user of slant is a user who is willing to analyse the news they are di
 
 ### Agile Working
 
-The working schedule of this project was outlined by a single project [Kanban board](https://github.com/users/AlbaXIII/projects/11), sorted by project category and purpose. Furthermore, the user stories are also subcategorised with MoSCoW prioritisation -  incrementally increasing the effectiveness of time management on this project.
+The working schedule of this project was outlined by a single project [Kanban board](https://github.com/users/AlbaXIII/projects/11), sorted by project category and purpose. Furthermore, the user stories are also subcategorised with MoSCoW prioritisation - separating features into **must-have**, **should-have**, **could-have** and **won’t-have** - incrementally increasing the effectiveness of time management on this project.
+
 
 ### EPICs
 
@@ -70,26 +71,24 @@ In order to further organise what could easily be an overly daunting project, I 
 
 **critical-eye-drf**
 
-database setup
-article model
-comment model
-review model
-profile model
-deployment
-
-admin documentation
+- database setup
+- article model
+- comment model
+- review model
+- profile model
+- deployment
+- admin documentation
 
 **critical-eye-react**
 
-initial setup
-navigation & user validation 
-adding & submitting articles
-articles page
-article detail 
-profile page
-final deployment
-
-admin documentation
+- initial setup
+- navigation & user validation 
+- adding & submitting articles
+- articles page
+- article detail 
+- profile page
+- final deployment
+- admin documentation
 
 ### User Stories
 
@@ -113,36 +112,39 @@ The total list of user stories noted in the Kanban board are listed below, organ
 
 database setup
 
-* Link project to kanban board
-* Initialise Django REST apps, link database & cloudinary storage
-* Create SuperUser for Admin access
-* Deploy to Heroku
+* Link project to kanban board - M
+* Initialise Django REST apps, link database & cloudinary storage - M
+* Create SuperUser for Admin access - M
+* Deploy to Heroku - M
 
 article model
 
-* add article model and migrate
+* add article model and migrate - M
+* search and filter articles – S
+* favourite articles - M
  
 comment model
 
-* add comment model and migrate
+* add comment model and migrate - M
+* add reply function - C
 
 review model
 
-* add review model and migrate
+* add review model and migrate - M
 
 profile model
 
-* add profile model and migrate
+* add profile model and migrate - M
 
 final deployment
 
-* finalise thorough testing of all models
-* complete final deployment to Heroku
+* finalise thorough testing of all models - M
+* complete final deployment to Heroku - M
 
 admin documentation
 
-* complete initial README documentation
-
+* complete initial README documentation - M
+* complete final README documentation - M
 
 **slant**
 
@@ -308,7 +310,7 @@ At the top of the page, there is a search bar that renders a filtered selection 
 ![slant subject buttons](src/assets/readme/readme-screenshots/subject-buttons.PNG)
 
 
-Each article has a reactive favourite component on the right, where the metrics for favourites and comments are displayed to show the amount of engagement an Article has. The favourite handle effect can be accessed through this page, and an authenticated user will be able to add an Article to their favourites by clicking on the star. Unauthorised users will be shown a tooltip informing them of their unauth status, and a different tooltip will show for users favouriting their own articles.
+Each article has a reactive favourite component on the right, where the metrics for favourites and comments are displayed to show the amount of engagement an Article contains. The favourite handle effect can be accessed through this page, and an authenticated user will be able to add an Article to their favourites by clicking on the star. Unauthorised users will be shown a tooltip informing them of their unauth status, and a different tooltip will show for users favouriting their own articles.
 
 ![slant article closeup](src/assets/readme/readme-screenshots/article-articlespage-format.PNG)
 
@@ -407,6 +409,38 @@ Once decided, I had to retrofit the slant API in order to receive the average ra
 
 This was because both my API view and call in both ends of the stack were misaligned and sending and receiving the wrong data in my fetchRating function.
 
+After a long while of working through the process, I ended up adding another view class to the API in order to be an individual endpoint to fetch average rating article rating stats, and from there I was able to fetch the correct average rating. 
+
+As for the frontend, I ended up breaking the process over piece by piece (this component was responsible for a frankly ludicrous amount of dev time) and start from the ground up. I added a seperate axios call to the new URL view for the average stats, changed the handleChange and handleSubmit functions to run smoother with parseint and many many submission messages and finally added a useEffect that ran after the initial fetch average data request. After a long time wrangling it, it is now operating as expected.
+
+- UsernameForm.js
+
+When implementing the UsernameForm.js file, the console was flagging the rather alarming error message;
+
+Warning: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function. Error Component Stack
+
+After troubleshooting around I found out it was because the async operation in my useEffect block was completing after the user navigated away from the page. 
+
+    useEffect(() => {const handleMount = async () => {
+        if (currentUser?.profile_id?.toString() === id) {                 
+            try {const { data } = await axiosReq.get(/profiles/${id}/);                     
+            const { name, bio } = data;setProfileData({ name, bio }); 
+            } catch (err) {                     
+                console.log(err)
+                history.push("/");
+
+The solution I found was to add a add an abortController into the handleMount sub-element, and a flag that would abort the process if there was an abort error made during the process;
+                    
+    const abortController = new AbortController();
+    let isMounted = true;   
+
+Which allowed me to only update state if the component is still mounted, and to not handle errors if the request was aborted.
+
+    if (err.name !== 'AbortError' && isMounted) {
+                        console.log(err);
+                        history.push("/");
+                    }
+
 - Deployment
 
 When heading to final deployment, I came into conflict with a very strange deployment error in Heroku. When deploying the main branch, the CommentCreateForm.js component was stopping the deployment as Heroku was flagging it as not found. After troubleshooting this was found to be because the component in GitHub was labelled as commentCreateForm and was therefore bricking imports when run as a buildpack in Heroku.
@@ -415,7 +449,13 @@ To solve this, I deleted the comment form, pushed the empty code, reimplemented 
 
 ###  Unfixed bugs
 
-No known unfixed bugs at time of deployment.
+**Infinite Scroll vs Filter Buttons**
+
+The infinite scroll component currently overrides the subject button filter command, so the buttons only filter for subjects immediately within loading range. Once it has filtered by a subject, the rest of the articles are fetched by the fetchdata call and render underneath the filtered subject. Furthermore any articles rendered outside the default range will not register on the subject button panes dynamic update for subjects in the DOM - so if a subject is posted outside the initial load range that isn't present immediately, the buttons will not register and therefore the subject will disappear. The search function is also available for the same functionality but due to time constraints I was not able to extricate infinite scroll from the article page. 
+
+Once filtered, fetchmoredata from infinitescroll will also render all articles not currently being filtered underneath the filter results. This is not really unintentional per se, as it becomes more a sorting function than a filter.
+
+No other known unfixed bugs at time of deployment.
 
 ## Future Features
 
@@ -550,6 +590,8 @@ USER STORIES
 
 | **DELETE** | Article/comment/rating owners can delete their submissions through dropdown on all pages.
 
+![slant CRUD Table](src/assets/readme/readme-testing/slant-crud-table.PNG)
+
 ## Deployment
 
 Project was created entirely in VSCode.
@@ -588,17 +630,30 @@ To clone this repository;
 2. In the new app menu, click on deploy.
 3. Connect the project to Github by clicking on the deployment method, selecting Github, and locating the repository.
 4. Back in the deploy tab, click deploy branch at the bottom of the page if the correct branch is selected above (main by default).
-5. View app when the process is complete.
+5. Once deployed, copy the heroku URL provided.
+6. Navigate to the **deployed API**.
+7. Add the Heroku URL as a CLIENT_ORIGIN config var.
+8. Install & configure ngrok.
+9. Add ngrok URL as CLIENT_ORIGIN_DEV.
+10. **redploy the API**.
+11. Open frontend application.
+12. Redeploy frontend.
+13. View app when the process is complete.
 
 ## Technologies Used
 
 **LANGUAGES**
 
-- HTML5
-- CSS
-- Javascript inc. NodeJS 16.20.2
-- Django REST Framework
-- React Bootstrap v4
+- **HTML5**
+- **CSS** 
+- **Javascript inc. NodeJS 16.20.2**
+- **Django REST Framework** - API Framework to serialize data fetched from backend.
+
+- **React Bootstrap v4** - used for formatting the rendered components in a intuitive way thanks to the inbuilt grid system, dovetailing with custom CSS
+- **React Router** - for seamless routing throughout the application.
+- **React Infinite Scroll Component** - to handle the seamless loading of data to the Article page, enabling the redundancy of pagination.
+- **Axios** - to handle all API calls, fetch, post requests.
+- **JWT Decode** - represnt claims between user & server. 
 
 **EXTERNAL**
 
