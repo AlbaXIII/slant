@@ -1,6 +1,6 @@
 # /slant README
 
-![slant site logo image](src\assets\readme\slant-default-image.png)
+![slant site logo image](src\assets\slant-default-image_thumbnail.png)
 
 ## Table of Contents
 
@@ -188,8 +188,8 @@ article detail
 profile page
 
 * site members can access a profile page with a custom profile image – M
-* profile page will display number of submitted articles & liked/rated posts – M
-* profile page will show list of liked/submitted articles navigable by tab delineation – S
+* profile page will display number of submitted articles & favourited/rated posts – M
+* profile page will show list of favourited/submitted articles navigable by tab delineation – S
 * users can access profile page of other users to view their post history – C
 
 final deployment
@@ -216,13 +216,13 @@ admin documentation
 
 - As a site member I would like to be able to see authentication status on all pages.
 
-- As a site member I would like to be able to submit my own articles from all pages using the built- in submission form once logged in.
+- As a site member I would like to be able to submit my own articles from all pages using the built-in submission form once logged in.
 
 - As a site member I would like to be able to edit or delete my submitted articles.
 
 - As a site member I would like to able to like, add comments, and submit bias rating to other articles. 
 
-- As a site member I would like to be able to view a profile page with my submitted and liked pages.
+- As a site member I would like to be able to view a profile page with my submitted and favourited pages.
 
 ### Administrator Goals
 
@@ -233,7 +233,7 @@ admin documentation
 
 ## Design
 
-The main guiding principal behind the creation of slant was one of minimalism without scarcity. I wanted to create a platform where users can gleam the maximum amount of information from a concise heading breakdown without being overwhelmed, and then access a more detailed view with a illustrative picture and the engagement components for authorised users.
+The main guiding principal behind the creation of slant was one of minimalism without scarcity. I wanted to create a platform where users can gleam the maximum amount of information from a concise heading breakdown without being overwhelmed, and then access a more detailed view with a illustrative picture and the engagement components for authorised users. It wasn't designed with the modernity of a current content site, the idea is for the text & discussion to take center stage.
 
 In terms of colours and layout, I wanted to emulate the look and feel of an vintage newspaper, with a background of a collaged newspaper cutting contrasting with the stark close-to black print providing a striking visual contrast. With the information of each article, there is a splash of colour on each one to keep the UX clean and defined.
 
@@ -277,9 +277,9 @@ The main Entity Relationship Diagram (ERD) for the project was designed using th
 
 The NavBar is the first and most vital component in the site, being present on every page. On the left-hand side, the site brand logo is displayed as a link to the homepage, whilst on the right, a collapsible responsive dropdown menu shows links depending on the authentication status of the user in question;
 
-IMAGE
+![NavBar auth links](src\assets\readme\readme-screenshots\navbar-auth-links.PNG)
 
-IMAGE
+![NavBar unauth links](src\assets\readme\readme-screenshots\navbar-unauth-links.PNG)
 
 When on smaller screens, the menu shows as a burger icon, with a custom hook that allows users to collapse the menu by clicking anywhere on the screen and not just in on the burger menu.
 
@@ -287,15 +287,15 @@ When on smaller screens, the menu shows as a burger icon, with a custom hook tha
 
 Using the NavBar, users can access forms that handle all stages of authentication. They can access a signup form;
 
-IMAGE
+![slant signup form](src\assets\readme\readme-screenshots\signup-form.PNG)
 
 A login form;
 
-IMAGE
+![slant login form](src\assets\readme\readme-screenshots\login-form.PNG)
 
 Or a logout form once logged in;
 
-IMAGE
+![slant logout form](src\assets\readme\readme-screenshots\logout-form.PNG)
 
 All stages of authentication have defensive programming inputs, so you are not able to enter an invalid password, or an empty input.
 
@@ -303,43 +303,42 @@ All stages of authentication have defensive programming inputs, so you are not a
 
 The main home page of the site is the landing pad for all users. In this page, each individual Article is rendered with the required amount of information, such as title, publisher, subject, and external link(if applicable).
 
-IMAGE
+[slant main article display](src\assets\readme\readme-screenshots\main-article-display.PNG)
 
 At the top of the page, there is a search bar that renders a filtered selection of Articles depending on keyword, user or subject – and can be further filtered down by selecting one of the discreet subject buttons which will return only Articles of that subject.
 
-IMAGE
+![slant serachbar](src\assets\readme\readme-screenshots\searchbar.PNG)
 
-IMAGE
+![slant subject buttons](src\assets\readme\readme-screenshots\subject-buttons.PNG)
+
 
 Each article has a reactive favourite component on the right, where the metrics for favourites and comments are displayed to show the amount of engagement an Article has. The favourite handle effect can be accessed through this page, and an authenticated user will be able to add an Article to their favourites by clicking on the star. Unauthorised users will be shown a tooltip informing them of their unauth status, and a different tooltip will show for users favouriting their own articles.
 
-IMAGE
+![slant article closeup](src\assets\readme\readme-screenshots\article-articlespage-format.PNG)
 
-IMAGE
+![slant favourite before](src\assets\readme\readme-screenshots\favourite-tooltip.PNG)
+
+![slant favourite after](src\assets\readme\readme-screenshots\favourite-after.PNG)
 
 Lastly in this page, article owners can see a dropdown menu for accessing the editing and deletion of their submitted articles.
 
-IMAGE
+![article-dropdown](src\assets\readme\readme-screenshots\article-dropdown.PNG)
 
 ### Article Creation
 
 Through the “create” link shown to authorised users at the top of the NavBar, authenticated users can access the Article Creation form. The form renders a text input for title and link, and dropdown inputs for subject and publisher. An Image input is placed at the top of the form, and will render a placeholder image if none is selected by the user.
 
-IMAGE
+![create-article-form](src\assets\readme\readme-screenshots\create-article-form.PNG)
 
 The text body is a textarea form that has an unlimited character count for the submission of long reads.
-
-IMAGE
 
 ### Article Detail
 
 This more detailed view has a larger card structure, with the display of the text body and the image (placeholder or submitted).
 
-IMAGE
+![article-detail-view](src\assets\readme\readme-screenshots\article-detail-view.PNG)
 
 In this detail view, Article owners can access the same dropdown form as on the main article page, which either renders the edit form with the current information for easy changing or deletes the article from the database.
-
-IMAGE
 
 Authenticated users can also access the same favouriting function from the main Article page.
 
@@ -349,38 +348,38 @@ Beneath each Article in the detailed Article view is the rating and comment form
 
 The rating form is 2 form ranges, rendered as a slider numbered from 1 to 10. The upper form returns an average of all rating ids associated with a particular Article, whilst the lower is an interactive form that sends a value to the database that updates the average in real time.
 
-IMAGE
+![slant rating form](src\assets\readme\readme-screenshots\rating-form.PNG)
 
 Unauthenticated users are unable to access the interactive form and can only see the average. Furthermore, once submitted, users can update their rating views as they see fit if they change their minds.
 
-IMAGE
+![slant rating form unauth](src\assets\readme\readme-screenshots\rating-comment-unauth.PNG)
 
 Underneath the rating form is the comment form. Comments are delineated by username, and date of submission which updates dynamically. Similarly to ratings, this is locked off from unauthenticated users and will either just show the comments linked to a particular Article or a message depending on the presence of any comments.
 
-IMAGE
+![slant comment form empty](src\assets\readme\readme-screenshots\comment-form-empty.PNG)
 
-IMAGE
+![slant comment form](src\assets\readme\readme-screenshots\comment-dropdown.PNG)
 
 Comment owners can access the same model of dropdown as the Article submittors, which allows them to update and edit their comments as they see fit.
 
-IMAGE
+![slant comment dropdown](src\assets\readme\readme-screenshots\comment-dropdown.PNG)
 
- 
 ### Profile
 
 Once authorised, a user can access the profile page through their username navlink displayed in the NavBar, or view other profiles by accessing the usernames of other posters through their article submissions.
 
 The profile page displays the username and small bio of the user, which a dropdown menu that allows the account owner to edit their username, bio or password.
 
-IMAGE
+![slant profile header](src\assets\readme\readme-screenshots\profile-header.PNG)
+
+![slant profile dropdown](src\assets\readme\readme-screenshots\profile-dropdown.PNG)
 
 Chiefly displayed in the profile page is a tabbed display of both the Articles submitted by the user and their favourited Articles, which can be swapped between at their leisure.
 
-IMAGE
+![slant profile tabs](src\assets\readme\readme-screenshots\profile-tabs.PNG)
 
 All functionality rendered in every Article (favouriting, detail view) are still available in this view as it rendering the same article element as displayed in the home page.
 
-IMAGE
 
 ## Security
 
@@ -396,9 +395,11 @@ A redirect hook is also in place to relay users attempting to access out-of-boun
 
 When implementing the ArticleEditForm, I was having an error when attempting to resubmit the edited Article back to the database;
 
-IMAGE
+![image error message](src\assets\readme\readme-screenshots\image-error.PNG)
 
-This issue was cause by a conflict in formData resubmission, where I was passing an undefined value but still attempting to append to it. The fix was to rework the handling logic to include a conditional append to the formData only if a a new file is actually selected.
+This issue was cause by a conflict in formData resubmission, where I was passing an undefined value but still attempting to append to it by duplicating the formData. The fix was to rework the handling logic to include a conditional append to the formData only if a a new file is actually selected.
+
+![image error code](src\assets\readme\readme-screenshots\image-error-code.PNG)
 
 - RatingForm.js
 
@@ -407,6 +408,12 @@ The rating form component went through quite a few development cycles. The initi
 Once decided, I had to retrofit the slant API in order to receive the average ratings, but in it’s initial implementation I could only send the default integer returned from the initial useState declaration, which was 5.
 
 This was because both my API view and call in both ends of the stack were misaligned and sending and receiving the wrong data in my fetchRating function.
+
+- Deployment
+
+When heading to final deployment, I came into conflict with a very strange deployment error in Heroku. When deploying the main branch, the CommentCreateForm.js component was stopping the deployment as Heroku was flagging it as not found. After troubleshooting this was found to be because the component in GitHub was labelled as commentCreateForm and was therefore bricking imports when run as a buildpack in Heroku.
+
+To solve this, I deleted the comment form, pushed the empty code, reimplemented the form, pushed the code again and checked for correct formatting.
 
 ###  Unfixed bugs
 
@@ -422,9 +429,33 @@ In a future development cycle a user would be able to filter comments by the num
 
 In a similar vein, replying to comments is another feature to be implemented in a further cycle. This would allow users to create mini-threads and increase UX for conversations between users.
 
+- Comments in profile view
+
+Users could be able to view all of their posted comments collated in a similar vein to favourites and submissions. This could be useful to quickly locate and reveal a memorable interaction with another user.
+
 ## Testing
 
 ### Validators
+
+**ESLINT**
+
+All custom JavaScript files passed through [eslint](https://eslint.org/) with no issues.
+
+![slant eslint components](src\assets\readme\readme-testing\eslint-components.PNG)
+
+![slant eslint contexts](src\assets\readme\readme-testing\eslint-contexts.PNG)
+
+![slant eslint hooks](src\assets\readme\readme-testing\eslint-hooks.PNG)
+
+![slant eslint pages](src\assets\readme\readme-testing\eslint-pages.PNG)
+
+![slant eslint app](src\assets\readme\readme-testing\eslint-app.PNG)
+
+**W3C CSS**
+
+All CSS utilised by slant passes through [Jigsaw W3C CSS validator](https://jigsaw.w3.org/css-validator/validator) with no issues.
+
+![slant CSS validation](src\assets\readme\readme-testing\css-url.PNG)
 
 ### Manual Testing
 
@@ -523,32 +554,76 @@ USER STORIES
 
 ## Deployment
 
+Project was created entirely in VSCode.
+
+Git commands were were grouped into the following commit message categories;
+
+- **"feat"** - feature work
+- **"maint"** - maintenance work
+- **"docs"** - documentation work
+
+All commands passed through the git commit -m command, and pushed to github with git push.
+
+### Forking & Cloning
+
+To fork this repository;
+
+1. On Github, navigate to [the slant repository](https://github.com/AlbaXIII/slant).
+2. In the top-right hand corner of the page, click fork.
+3. Choose an owner for the forked repository.
+4. Optionally, rename, add a description, and/or copy the default branch only.
+5. Click create fork.
+
+To clone this repository;
+
+1. On Github, navigate to [the slant repository](https://github.com/AlbaXIII/slant).
+2. Above the list of files click <> Code.
+3. Copy the URL of the repository - you may choose to clone by HTTPS, using a SSH key, or Githubn CLI.
+4. Open Git Bash or other IDE.
+5. Navigate to your selected working directory.
+6. Type git clone, then post the URL.
+7. Press enter. 
+
+### Heroku
+
+1. Log in or register, then click 'create app'.
+2. In the new app menu, click on deploy.
+3. Connect the project to Github by clicking on the deployment method, selecting Github, and locating the repository.
+4. Back in the deploy tab, click deploy branch at the bottom of the page if the correct branch is selected above (main by default).
+5. View app when the process is complete.
+
 ## Technologies Used
+
+**LANGUAGES**
+
+- HTML5
+- CSS
+- Javascript inc. NodeJS 16.20.2
+- Django REST Framework
+- React Bootstrap v4
+
+**EXTERNAL**
+
+- Balsamiq Wireframes
+- Font Awesome
+- Google Fonts
+- Heroku
 
 ## Credits and Acknowledgments 
 
 ### Credits
 
 - This project, as with the slant API, is heavily based on the skeleton of the ‘moments’ project from Code Institute’s DRF & React advanced front end walkthrough module.
-
-- Style and layout inspiration from [Reddit](https://reddit.com), and [Ground News](https://ground.news).
-
+- Style and layout inspiration from [Reddit](https://reddit.com) and [Ground News](https://ground.news).
 - Credit as well to many repositories looked to for inspiration, for example;
-
-- [yakker](https://github.com/lee-joanne/yakker-frontend/) by [lee-joanne](github.com/lee-joanne)
-
-- [KitRate](https://github.com/TR94/kit-rate-pp5-frontend) by [TR94](https://github.com/TR94/)
-
-- [Travel Tickr](https://github.com/SandraBergstrom/travel-tickr) by [Sandra Bergstrom](https://github.com/SandraBergstrom/)
-
+    - [yakker](https://github.com/lee-joanne/yakker-frontend/) by [lee-joanne](github.com/lee-joanne)
+    - [KitRate](https://github.com/TR94/kit-rate-pp5-frontend) by [TR94](https://github.com/TR94/)
+    - [Travel Tickr](https://github.com/SandraBergstrom/travel-tickr) by [Sandra Bergstrom](https://github.com/SandraBergstrom/)
 - The countless StackOverflow & Reddit posts used during the development process.
-
 - Special credit to the Code Institute Slack & Tutor Support channels.
 
 ### Acknowledgements
 
 - To my mentor Dick Vlaanderen, who as always was a great help.
-
-- My friend Alex, for his wisdom.
-
-- My wife Kate, for her patience!
+- My friends Alex & Ernie for their wisdom.
+- My wife Kate, for her unending patience!
